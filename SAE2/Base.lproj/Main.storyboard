@@ -63,7 +63,7 @@
         <!--Statistiques-->
         <scene sceneID="S6t-sb-ew4">
             <objects>
-                <viewController id="4C7-Bc-pwb" sceneMemberID="viewController">
+                <viewController id="4C7-Bc-pwb" customClass="StatsViewController" customModule="SAE2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IhL-uA-dyq">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
