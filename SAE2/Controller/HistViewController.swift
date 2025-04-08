@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HistViewController: UIViewController {
+class HistViewController:   UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

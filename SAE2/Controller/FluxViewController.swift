@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FluxViewController: UIViewController {
+class FluxViewController:  UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
