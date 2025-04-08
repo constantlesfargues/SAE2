@@ -8,31 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--historique-->
-        <scene sceneID="KTi-MX-1KJ">
-            <objects>
-                <viewController title="historique" id="ZjS-Hw-VkQ" customClass="HistViewController" customModule="SAE2" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="j8j-aw-XFz">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="il4-3S-h0S">
-                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Historique" id="x7C-7j-pv6"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="cZM-Un-pK6"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Historique" image="clock.fill" catalog="system" id="liA-zg-XRX"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ERN-2j-5va" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-279" y="1230"/>
-        </scene>
         <!--Flux-->
         <scene sceneID="wO8-vw-nje">
             <objects>
@@ -95,6 +70,42 @@
             </objects>
             <point key="canvasLocation" x="-1216" y="1230"/>
         </scene>
+        <!--Historique-->
+        <scene sceneID="DfK-hK-6jo">
+            <objects>
+                <tableViewController id="uJK-SD-b34" customClass="HistViewController" customModule="SAE2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="d0s-Ty-G8v">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="DQr-l4-twi">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Historique" id="MH3-BH-txs"/>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="O4T-So-mOH">
+                                <rect key="frame" x="0.0" y="94" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O4T-So-mOH" id="Moa-kh-stQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uJK-SD-b34" id="V0Q-rd-jXk"/>
+                            <outlet property="delegate" destination="uJK-SD-b34" id="iOX-cE-zh8"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Historique" image="clock.fill" catalog="system" id="iPh-dY-QSV"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="79q-cN-KTL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-251" y="1230"/>
+        </scene>
         <!--Parametres-->
         <scene sceneID="dub-j5-mcl">
             <objects>
@@ -140,7 +151,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Kcu-hY-UUR" kind="relationship" relationship="viewControllers" id="DG4-rh-00Z"/>
-                        <segue destination="ZjS-Hw-VkQ" kind="relationship" relationship="viewControllers" id="vgQ-MX-hiQ"/>
+                        <segue destination="uJK-SD-b34" kind="relationship" relationship="viewControllers" id="1ep-m2-sQm"/>
                         <segue destination="p2T-64-MqM" kind="relationship" relationship="viewControllers" id="L56-zZ-jQw"/>
                         <segue destination="kp6-o1-nR6" kind="relationship" relationship="viewControllers" id="egw-Zi-0eB"/>
                     </connections>
