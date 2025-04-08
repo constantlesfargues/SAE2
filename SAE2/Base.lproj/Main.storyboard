@@ -11,7 +11,7 @@
         <!--Historique-->
         <scene sceneID="gTp-Af-aOu">
             <objects>
-                <viewController id="xHu-BL-ivf" sceneMemberID="viewController">
+                <viewController id="xHu-BL-ivf" customClass="HistViewController" customModule="SAE2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Yo-gy-Vdb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,7 +79,7 @@
         <!--Réglages-->
         <scene sceneID="vlv-wl-OaY">
             <objects>
-                <viewController id="1kW-4h-fxl" sceneMemberID="viewController">
+                <viewController id="1kW-4h-fxl" customClass="SettingsViewController" customModule="SAE2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fsz-sY-NUJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
