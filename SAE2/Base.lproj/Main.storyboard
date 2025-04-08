@@ -31,7 +31,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ERN-2j-5va" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4027" y="2073"/>
+            <point key="canvasLocation" x="-279" y="1230"/>
         </scene>
         <!--Flux-->
         <scene sceneID="wO8-vw-nje">
@@ -55,7 +55,7 @@
                                             <buttonConfiguration key="configuration" style="gray" image="plus" catalog="system"/>
                                         </button>
                                     </barButtonItem>
-                                    <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hlr-Oa-hTb">
+                                    <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hlr-Oa-hTb">
                                         <rect key="frame" x="109.33333333333331" y="6" width="161" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
@@ -93,7 +93,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6b-mR-TsW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4770" y="2073"/>
+            <point key="canvasLocation" x="-1216" y="1230"/>
         </scene>
         <!--Parametres-->
         <scene sceneID="dub-j5-mcl">
@@ -127,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcD-jy-bTm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2407" y="2073"/>
+            <point key="canvasLocation" x="1796" y="1230"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sDo-aZ-XpD">
@@ -147,7 +147,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmz-0z-R0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3580" y="1242"/>
+            <point key="canvasLocation" x="250" y="353"/>
         </scene>
         <!--Stat-->
         <scene sceneID="dUh-Wp-ogP">
@@ -183,7 +183,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAu-ie-ZP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3210" y="2073"/>
+            <point key="canvasLocation" x="711" y="1230"/>
         </scene>
     </scenes>
     <resources>
