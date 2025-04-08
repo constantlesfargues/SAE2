@@ -1,1 +1,3 @@
-**/SAE2.xcodeproj
+**/SAE2.xcodeproj/
+
+*.DS_Store
