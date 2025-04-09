@@ -11,10 +11,20 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    
+    // Données du compte
+    public var nomCompte : String = ""
+    
+    // Parametres du compte
+    public var param : Parametres = Parametres()
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        
+        param = Parametres.lireParam()
+        
         return true
     }
 
