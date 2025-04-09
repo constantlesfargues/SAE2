@@ -16,10 +16,10 @@ class Parametres : Codable {
     }
     
     // sauvegarde les parametres donnés (dans le fichier "parametres.json")
-    public static func ecrireParam(_ lesParametres : Parametres ) {
+    public static func ecrireParam(_ user : Utilisateur ,_ lesParametres : Parametres ) {
         let leFileManager = FileManager.default
         let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
-        let urlFichier = urls.first!.appendingPathComponent( "parametres.json" )
+        let urlFichier = urls.first!.appendingPathComponent( "\(user.nomUtilisateur)Parametres.json" )
         
         let objJSONEncodeur = JSONEncoder()
         let donneesASauvegarder = try? objJSONEncodeur.encode( lesParametres )
@@ -28,10 +28,10 @@ class Parametres : Codable {
     }
     
     // renvoi les parametres lus (dans le fichier "parametres.json")
-    public static func lireParam() -> Parametres {
+    public static func lireParam(_ user : Utilisateur) -> Parametres {
         let leFileManager = FileManager.default
         let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
-        let urlFichier = urls.first!.appendingPathComponent( "parametres.json" )
+        let urlFichier = urls.first!.appendingPathComponent( "\(user.nomUtilisateur)Parametres.json" )
         
         if ( leFileManager.fileExists(atPath : urlFichier.path) ) {
             
@@ -45,6 +45,10 @@ class Parametres : Codable {
             let lesParametres : Parametres = Parametres()
             return lesParametres
         }
+    }
+    
+    public func enChaine() -> String{
+        return "\(param1) - \(param2)"
     }
     
     

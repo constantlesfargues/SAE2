@@ -12,18 +12,20 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
-    // Données du compte
-    public var nomCompte : String = ""
+    // Utilisateur actuel
+    public static var user : Utilisateur = Utilisateur()
     
-    // Parametres du compte
-    public var param : Parametres = Parametres()
+    // Parametres de l'utilisateur
+    public static var param : Parametres = Parametres()
+    
+    // Données de l'utilisateur
     
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
-        param = Parametres.lireParam()
+        AppDelegate.user = Utilisateur.lireUtilisateur()
+        AppDelegate.param = Parametres.lireParam(AppDelegate.user)
         
         return true
     }
