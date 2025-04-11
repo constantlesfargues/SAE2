@@ -9,7 +9,7 @@ class Utilisateur : Codable{
         nomUtilisateur = "test"
     }
     
-    // sauvegarde les parametres donnés (dans le fichier "parametres.json")
+    // sauvegarde l' utilisateur donné (dans le fichier "utilisateur.json")
     public static func ecrireUtilisateur(_ unUtilisateur : Utilisateur ) {
         let leFileManager = FileManager.default
         let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
@@ -21,7 +21,7 @@ class Utilisateur : Codable{
         leFileManager.createFile(atPath : urlFichier.path, contents : donneesASauvegarder, attributes : nil)
     }
     
-    // renvoi les parametres lus (dans le fichier "parametres.json")
+    // renvoi l'utilisateur lu (dans le fichier "utilisateur.json")
     public static func lireUtilisateur() -> Utilisateur {
         let leFileManager = FileManager.default
         let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
