@@ -130,6 +130,24 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJk-XP-3Pk">
+                                <rect key="frame" x="51" y="724" width="98" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Appliquer"/>
+                                <connections>
+                                    <action selector="tapAppliquer:" destination="kp6-o1-nR6" eventType="touchUpInside" id="ZUa-Ix-swS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbd-8h-60X">
+                                <rect key="frame" x="245" y="724" width="94" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Annuler"/>
+                                <connections>
+                                    <action selector="tapAnnuler:" destination="kp6-o1-nR6" eventType="touchUpInside" id="zuS-l9-x7h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c0d-i5-t8f"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

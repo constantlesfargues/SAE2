@@ -18,14 +18,12 @@ class SettingsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func tapAppliquer(_ sender: Any) {
+        // écrit les valeurs des champs dans les parametres 
     }
-    */
-
+    
+    @IBAction func tapAnnuler(_ sender: Any) {
+        // remet tout les champs a la valeur actuelement dans les parametres
+    }
+    
 }
