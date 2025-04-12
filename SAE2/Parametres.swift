@@ -17,39 +17,45 @@ class Parametres : Codable {
     
     // sauvegarde les parametres donnés (dans le fichier "<nom utilisateur>Parametres.json")
     public static func ecrireParam(_ user : Utilisateur ,_ lesParametres : Parametres ) {
+        // récupere l'url du fichier
         let leFileManager = FileManager.default
         let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
         let urlFichier = urls.first!.appendingPathComponent( "\(user.nomUtilisateur)Parametres.json" )
         
+        // encode les parametres
         let objJSONEncodeur = JSONEncoder()
         let donneesASauvegarder = try? objJSONEncodeur.encode( lesParametres )
         
+        // crée/écrit dans le fichier
         leFileManager.createFile(atPath : urlFichier.path, contents : donneesASauvegarder, attributes : nil)
     }
     
     // renvoi les parametres lus (dans le fichier "<nom utilisateur>Parametres.json")
     public static func lireParam(_ user : Utilisateur) -> Parametres? {
+        // récupere l'url du fichier
         let leFileManager = FileManager.default
         let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
         let urlFichier = urls.first!.appendingPathComponent( "\(user.nomUtilisateur)Parametres.json" )
         
+        // si le fichier existe
         if ( leFileManager.fileExists(atPath : urlFichier.path) ) {
             
-            let data = try! Data( contentsOf : urlFichier )
+            let data = try! Data( contentsOf : urlFichier )// charge le fichier
             
             let decoder = JSONDecoder( )
+            let retour : [Parametres]? = try? decoder.decode( [Parametres].self , from : data )// décode en objet de la classe
             
-            let retour : [Parametres]? = try? decoder.decode( [Parametres].self , from : data )
-            if ( retour?.isEmpty == nil ) {
+            if ( retour?.isEmpty == nil ) {  
                 return nil
             }else{
                 return retour![0]
             }
         }else{
-            return nil
+            return nil// renvoi nil si le fichier n'existe pas
         }
     }
     
+    // renvoi toutes les données de l'instance dans un String formaté
     public func enChaine() -> String{
         return "\(param1) - \(param2)"
     }
