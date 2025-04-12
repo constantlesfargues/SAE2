@@ -41,10 +41,6 @@ class Utilisateur : Codable {
         }
     }
     
-    public static func changeUtilisateur(){
-        // a faire
-    }
-    
     public func enChaine() -> String{
         return "nom : \(nomUtilisateur)"
     }

@@ -48,6 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    public static func changeUtilisateur(_ indiceUtilisateur : Int){
+        // change le premier utilisateur dans la liste users
+        // ( dans AppDelegate et JSON )
+    }
+    
 
     // MARK: UISceneSession Lifecycle
 

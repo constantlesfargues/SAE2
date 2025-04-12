@@ -15,7 +15,7 @@ class Parametres : Codable {
         param2 = "test"
     }
     
-    // sauvegarde les parametres donnés (dans le fichier "<nom utilisateur>parametres.json")
+    // sauvegarde les parametres donnés (dans le fichier "<nom utilisateur>Parametres.json")
     public static func ecrireParam(_ user : Utilisateur ,_ lesParametres : Parametres ) {
         let leFileManager = FileManager.default
         let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
@@ -27,7 +27,7 @@ class Parametres : Codable {
         leFileManager.createFile(atPath : urlFichier.path, contents : donneesASauvegarder, attributes : nil)
     }
     
-    // renvoi les parametres lus (dans le fichier "<nom utilisateur>.json")
+    // renvoi les parametres lus (dans le fichier "<nom utilisateur>Parametres.json")
     public static func lireParam(_ user : Utilisateur) -> Parametres? {
         let leFileManager = FileManager.default
         let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
@@ -39,11 +39,14 @@ class Parametres : Codable {
             
             let decoder = JSONDecoder( )
             
-            let retour = try! decoder.decode( [Parametres].self , from : data )
-            return retour[0]
+            let retour : [Parametres]? = try? decoder.decode( [Parametres].self , from : data )
+            if ( retour?.isEmpty == nil ) {
+                return nil
+            }else{
+                return retour![0]
+            }
         }else{
-            let lesParametres : Parametres? = nil
-            return lesParametres
+            return nil
         }
     }
     
