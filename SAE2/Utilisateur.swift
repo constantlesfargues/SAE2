@@ -5,8 +5,8 @@ class Utilisateur : Codable {
     
     public var nomUtilisateur : String
     
-    public init(){
-        nomUtilisateur = "test"
+    public init(_ nom : String){
+        nomUtilisateur = nom
     }
     
     // sauvegarde l' utilisateur donné (dans le fichier "utilisateur.json")

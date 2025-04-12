@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     // Utilisateur actuel
-    public static var users : [Utilisateur] = [Utilisateur()]
+    public static var users : [Utilisateur] = [Utilisateur("initial-test")]
     
     // Parametres de l'utilisateur
     public static var param : Parametres = Parametres()
@@ -32,6 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Utilisateur.ecrireUtilisateur(AppDelegate.users)
         }
         
+        AppDelegate.updateDonneesUser()
+        
+        return true
+    }
+    
+    public static func updateDonneesUser(){
         let parametresLu = Parametres.lireParam(AppDelegate.users[0])
         if ( parametresLu != nil ){
             AppDelegate.param = parametresLu!
@@ -45,13 +51,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             Flux.ecrireFlux(AppDelegate.users[0], AppDelegate.fluxs)
         }
-        
-        return true
     }
     
     public static func changeUtilisateur(_ indiceUtilisateur : Int){
         // change le premier utilisateur dans la liste users
         // ( dans AppDelegate et JSON )
+        let userCo : Utilisateur = AppDelegate.users.remove(at: indiceUtilisateur)
+        AppDelegate.users.insert(userCo, at: 0)
+        Utilisateur.ecrireUtilisateur(AppDelegate.users)
+        
+        AppDelegate.updateDonneesUser()
     }
     
 

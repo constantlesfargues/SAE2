@@ -131,7 +131,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbd-8h-60X">
-                                <rect key="frame" x="283" y="724" width="94" height="35"/>
+                                <rect key="frame" x="239" y="722" width="94" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Annuler"/>
@@ -144,7 +144,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggz-5N-lQY">
-                                <rect key="frame" x="141" y="310" width="111" height="35"/>
+                                <rect key="frame" x="157" y="310" width="111" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Sélectioner"/>
@@ -160,14 +160,43 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJk-XP-3Pk">
-                                <rect key="frame" x="30" y="724" width="215" height="35"/>
+                                <rect key="frame" x="61" y="722" width="98" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Appliquer les parametres"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Appliquer"/>
                                 <connections>
                                     <action selector="tapAppliquer:" destination="kp6-o1-nR6" eventType="touchUpInside" id="ZUa-Ix-swS"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xOH-h9-drb">
+                                <rect key="frame" x="263" y="411" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2a3-Cg-0wW">
+                                <rect key="frame" x="303" y="310" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="+"/>
+                                <connections>
+                                    <action selector="tapAjouterUtilisateur:" destination="kp6-o1-nR6" eventType="touchUpInside" id="Gfc-ef-vLX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGn-d7-gpL">
+                                <rect key="frame" x="21" y="310" width="94" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Suprimer"/>
+                                <connections>
+                                    <action selector="tapSuprimerUtilisateur:" destination="kp6-o1-nR6" eventType="touchUpInside" id="VBd-IQ-vgN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mode Sombre :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiI-hN-3ip">
+                                <rect key="frame" x="61" y="421" width="117" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c0d-i5-t8f"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -175,6 +204,7 @@
                     <tabBarItem key="tabBarItem" title="Parametres" image="gearshape.fill" catalog="system" id="Ga7-am-vfz"/>
                     <connections>
                         <outlet property="UtilisateurPicker" destination="RUd-Tj-F3y" id="ndb-UY-3BT"/>
+                        <outlet property="boutonSuprimer" destination="pGn-d7-gpL" id="1Vz-gu-N9Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcD-jy-bTm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
