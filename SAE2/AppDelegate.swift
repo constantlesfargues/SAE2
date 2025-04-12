@@ -10,22 +10,41 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     
     // Utilisateur actuel
-    public static var user : Utilisateur = Utilisateur()
+    public static var users : [Utilisateur] = [Utilisateur()]
     
     // Parametres de l'utilisateur
     public static var param : Parametres = Parametres()
     
     // Données de l'utilisateur
+    public static var fluxs : [Flux] = []
     
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        AppDelegate.user = Utilisateur.lireUtilisateur()
-        AppDelegate.param = Parametres.lireParam(AppDelegate.user)
+        let utilisateursLu = Utilisateur.lireUtilisateur()
+        if ( utilisateursLu != nil ){
+            AppDelegate.users = utilisateursLu!
+        }else{
+            Utilisateur.ecrireUtilisateur(AppDelegate.users)
+        }
+        
+        let parametresLu = Parametres.lireParam(AppDelegate.users[0])
+        if ( parametresLu != nil ){
+            AppDelegate.param = parametresLu!
+        }else{
+            Parametres.ecrireParam(AppDelegate.users[0], AppDelegate.param)
+        }
+        
+        let fluxsLu = Flux.lireFlux(AppDelegate.users[0])
+        if ( parametresLu != nil ){
+            AppDelegate.fluxs = fluxsLu!
+        }else{
+            Flux.ecrireFlux(AppDelegate.users[0], AppDelegate.fluxs)
+        }
         
         return true
     }

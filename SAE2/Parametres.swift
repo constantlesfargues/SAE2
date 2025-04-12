@@ -6,10 +6,10 @@ class Parametres : Codable {
     // tout les parametres de l'app
     public var param1 : Int
     public var param2 : String
-    // ajouter parametres
+    // ajouter les parametres
     
     
-    // constructeur
+    // constructeur (parametres initiaux)
     public init(){
         param1 = 0
         param2 = "test"
@@ -28,7 +28,7 @@ class Parametres : Codable {
     }
     
     // renvoi les parametres lus (dans le fichier "<nom utilisateur>.json")
-    public static func lireParam(_ user : Utilisateur) -> Parametres {
+    public static func lireParam(_ user : Utilisateur) -> Parametres? {
         let leFileManager = FileManager.default
         let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
         let urlFichier = urls.first!.appendingPathComponent( "\(user.nomUtilisateur)Parametres.json" )
@@ -42,7 +42,7 @@ class Parametres : Codable {
             let retour = try! decoder.decode( [Parametres].self , from : data )
             return retour[0]
         }else{
-            let lesParametres : Parametres = Parametres()
+            let lesParametres : Parametres? = nil
             return lesParametres
         }
     }

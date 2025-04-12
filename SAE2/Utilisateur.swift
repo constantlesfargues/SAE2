@@ -1,7 +1,7 @@
 
 import Foundation
 
-class Utilisateur : Codable{
+class Utilisateur : Codable {
     
     public var nomUtilisateur : String
     
@@ -10,19 +10,19 @@ class Utilisateur : Codable{
     }
     
     // sauvegarde l' utilisateur donné (dans le fichier "utilisateur.json")
-    public static func ecrireUtilisateur(_ unUtilisateur : Utilisateur ) {
+    public static func ecrireUtilisateur(_ lesUtilisateur : [Utilisateur] ) {
         let leFileManager = FileManager.default
         let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
         let urlFichier = urls.first!.appendingPathComponent( "utilisateur.json" )
         
         let objJSONEncodeur = JSONEncoder()
-        let donneesASauvegarder = try? objJSONEncodeur.encode( unUtilisateur )
+        let donneesASauvegarder = try? objJSONEncodeur.encode( lesUtilisateur )
         
         leFileManager.createFile(atPath : urlFichier.path, contents : donneesASauvegarder, attributes : nil)
     }
     
     // renvoi l'utilisateur lu (dans le fichier "utilisateur.json")
-    public static func lireUtilisateur() -> Utilisateur {
+    public static func lireUtilisateur() -> [Utilisateur]? {
         let leFileManager = FileManager.default
         let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
         let urlFichier = urls.first!.appendingPathComponent( "utilisateur.json" )
@@ -34,11 +34,15 @@ class Utilisateur : Codable{
             let decoder = JSONDecoder( )
             
             let retour = try! decoder.decode( [Utilisateur].self , from : data )
-            return retour[0]
+            return retour
         }else{
-            let lesParametres : Utilisateur = Utilisateur()
-            return lesParametres
+            let lesUtilisateurs : [Utilisateur]? = nil
+            return lesUtilisateurs
         }
+    }
+    
+    public static func changeUtilisateur(){
+        // a faire
     }
     
     public func enChaine() -> String{
