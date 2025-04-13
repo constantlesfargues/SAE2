@@ -47,6 +47,19 @@ class Utilisateur : Codable {
         }
     }
     
+    // vérifie que le nouvNomUser n'est pas nil ou deja pris 
+    public static func nomPossible(_ tabUsers : [Utilisateur] ,_ nouvNomUser : String? ) -> Bool {
+        if ( nouvNomUser == nil ){
+            return false
+        }
+        for unUtilisateur in tabUsers {
+            if( unUtilisateur.nomUtilisateur == nouvNomUser ){
+                return false
+            }
+        }
+        return true
+    }
+    
     // renvoi toutes les données de l'instance dans un String formaté
     public func enChaine() -> String{
         return "nom : \(nomUtilisateur)"

@@ -15,6 +15,9 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // Outlet pour désactiver le bouton suprimer
     @IBOutlet weak var boutonSuprimer: UIButton!
     
+    @IBOutlet weak var modeSombre: UISwitch!
+    
+    
     // pop up lors de l'ajout d'un Utilisateur
     public var alertAjout : UIAlertController!
     
@@ -26,6 +29,14 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         UtilisateurPicker.dataSource = self
         UtilisateurPicker.delegate = self
         UtilisateurPicker.reloadAllComponents()// actualise l'affichage des Utilisateurs
+        
+        // met tout les champs des parametres a la valeur actuele des parametres
+        resetInputParam()
+        
+        // Empeche la supréssion d'Utilisateur si il n'y en a qu'un
+        if (AppDelegate.users.count <= 1){
+            boutonSuprimer.isEnabled = false
+        }
         
         // Setup de la popup d'ajout d'Utilisateur :
         alertAjout = UIAlertController(title: "Ajouter un utilisateur", message: "Entrez le nom d'utilisateur", preferredStyle: .alert)
@@ -40,20 +51,20 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             let inputName = self.alertAjout.textFields![0].text
             
             // Si un nom est bien entré
-            if (inputName != nil){
+            if ( Utilisateur.nomPossible(AppDelegate.users, inputName) ){
                 AppDelegate.users.append(Utilisateur(inputName!))
+                Utilisateur.ecrireUtilisateur(AppDelegate.users)
             }else{
                 // affiche erreur
             }
             self.UtilisateurPicker.reloadAllComponents()// actualise l'affichage des Utilisateurs
+            
+            if (AppDelegate.users.count > 1){ // Active le bouton suprimmer si il y a assez d'utilisateurs
+                self.boutonSuprimer.isEnabled = true
+            }
         }
         alertAjout.addAction(cancelAction)
         alertAjout.addAction(saveAction)
-        
-        // Empeche la supréssion d'Utilisateur si il n'y en a qu'un
-        if (AppDelegate.users.count <= 1){
-            boutonSuprimer.isEnabled = false
-        }
         
     }
     
@@ -85,9 +96,6 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBAction func tapAjouterUtilisateur(_ sender: Any) {
         present(alertAjout, animated: true, completion: nil)// appelle la pop up d'ajout d'Utilisateur
         
-        if (AppDelegate.users.count > 1){ // Active le bouton suprimmer si il y a assez d'utilisateurs
-            boutonSuprimer.isEnabled = true
-        }
     }
     
     // Appuis sur le bouton "Suprimer" (un Utilisateur)
@@ -109,12 +117,21 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // Appuis sur le bouton "Appliquer" (les parametres)
     @IBAction func tapAppliquer(_ sender: Any) {
         // écrit les valeurs des champs dans les parametres
-        // ( Dans AppDelegate & JSON )
+        AppDelegate.param.modeSombre = modeSombre.isOn
+        
+        // actualise le JSON
+        Parametres.ecrireParam(AppDelegate.users[0], AppDelegate.param)
     }
     
     // Appuis sur le bouton "Annuler"
     @IBAction func tapAnnuler(_ sender: Any) {
         // remet tout les champs a la valeur actuelement dans les parametres
+        resetInputParam()
+    }
+    
+    // met tout les champs des parametres a la valeur actuele des parametres
+    public func resetInputParam(){
+        modeSombre.setOn(AppDelegate.param.modeSombre, animated: true)
     }
     
 }

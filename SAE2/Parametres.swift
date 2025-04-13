@@ -4,15 +4,13 @@ import Foundation
 class Parametres : Codable {
     
     // tout les parametres de l'app
-    public var param1 : Int
-    public var param2 : String
+    public var modeSombre : Bool
     // ajouter les parametres
     
     
     // constructeur (parametres initiaux)
     public init(){
-        param1 = 0
-        param2 = "test"
+        modeSombre = false
     }
     
     // sauvegarde les parametres donnés (dans le fichier "<nom utilisateur>Parametres.json")
@@ -57,7 +55,7 @@ class Parametres : Codable {
     
     // renvoi toutes les données de l'instance dans un String formaté
     public func enChaine() -> String{
-        return "\(param1) - \(param2)"
+        return "\(modeSombre)"
     }
     
     
