@@ -89,6 +89,10 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // change l'utilisateur
         AppDelegate.changeUtilisateur(indiceNouvUser)
         
+        resetInputParam()
+        
+        UtilisateurPicker.selectRow(0, inComponent: 0, animated: true)
+        
         UtilisateurPicker.reloadAllComponents()// actualise l'affichage des Utilisateurs
     }
     

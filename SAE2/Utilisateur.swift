@@ -61,8 +61,9 @@ class Utilisateur : Codable {
     }
     
     // renvoi toutes les données de l'instance dans un String formaté
-    public func enChaine() -> String{
-        return "nom : \(nomUtilisateur)"
+    public func getNomFormate() -> String{
+        let chaine : String = nomUtilisateur.filter { $0.isLetter || "0"..."9" ~= $0 }
+        return chaine
     }
     
 }

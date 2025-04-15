@@ -13,41 +13,32 @@ class Flux : Codable{
     public var dureeFlux : Int
     
     
-    // sauvegarde les Flux donnés (dans le fichier "<nom utilisateur>Flux.json")
-    public static func ecrireFlux(_ user : Utilisateur ,_ lesFlux : [Flux] ) {
-        // récupere l'url du fichier
-        let leFileManager = FileManager.default
-        let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
-        let urlFichier = urls.first!.appendingPathComponent( "\(user.nomUtilisateur)Flux.json" )
-        
-        // encode les Fluxs
-        let objJSONEncodeur = JSONEncoder()
-        let donneesASauvegarder = try? objJSONEncodeur.encode( lesFlux )
-        
-        // crée/écrit dans le fichier
-        leFileManager.createFile(atPath : urlFichier.path, contents : donneesASauvegarder, attributes : nil)
-    }
-    
-    // renvoi les Flux lus (dans le fichier "<nom utilisateur>Flux.json")
-    public static func lireFlux(_ user : Utilisateur) -> [Flux]? {
-        // récupere l'url du fichier
-        let leFileManager = FileManager.default
-        let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
-        let urlFichier = urls.first!.appendingPathComponent( "\(user.nomUtilisateur)Flux.json" )
-        
-        // si le fichier existe
-        if ( leFileManager.fileExists(atPath : urlFichier.path) ) {
-            
-            let data = try! Data( contentsOf : urlFichier )// charge le fichier
-            
-            let decoder = JSONDecoder( )
-            let retour = try! decoder.decode( [Flux].self , from : data )// décode en objet de la classe
-            
-            return retour
-        }else{
-            let lesFlux : [Flux]? = nil
-            return lesFlux // renvoi nil si le fichier n'existe pas
+    // Sauvegarde les flux dans le fichier "<nom utilisateur>Flux.json"
+    public static func ecrireFlux(_ user: Utilisateur, _ lesFlux: [Flux]) {
+        let fileManager = FileManager.default
+        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        let fileURL = urls.first!.appendingPathComponent("\(user.getNomFormate())Flux.json")
+
+        let encoder = JSONEncoder()
+        if let dataToSave = try? encoder.encode(lesFlux) {
+            fileManager.createFile(atPath: fileURL.path, contents: dataToSave, attributes: nil)
         }
+    }
+
+    // Renvoie les flux lus depuis "<nom utilisateur>Flux.json"
+    public static func lireFlux(_ user: Utilisateur) -> [Flux]? {
+        let fileManager = FileManager.default
+        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        let fileURL = urls.first!.appendingPathComponent("\(user.getNomFormate())Flux.json")
+
+        guard fileManager.fileExists(atPath: fileURL.path),
+              let data = try? Data(contentsOf: fileURL),
+              let flux = try? JSONDecoder().decode([Flux].self, from: data)
+        else {
+            return nil
+        }
+
+        return flux
     }
     
     // renvoi toutes les données de l'instance dans un String formaté

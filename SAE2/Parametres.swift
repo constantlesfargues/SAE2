@@ -13,44 +13,30 @@ class Parametres : Codable {
         modeSombre = false
     }
     
-    // sauvegarde les parametres donnés (dans le fichier "<nom utilisateur>Parametres.json")
-    public static func ecrireParam(_ user : Utilisateur ,_ lesParametres : Parametres ) {
-        // récupere l'url du fichier
-        let leFileManager = FileManager.default
-        let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
-        let urlFichier = urls.first!.appendingPathComponent( "\(user.nomUtilisateur)Parametres.json" )
-        
-        // encode les parametres
-        let objJSONEncodeur = JSONEncoder()
-        let donneesASauvegarder = try? objJSONEncodeur.encode( lesParametres )
-        
-        // crée/écrit dans le fichier
-        leFileManager.createFile(atPath : urlFichier.path, contents : donneesASauvegarder, attributes : nil)
-    }
-    
-    // renvoi les parametres lus (dans le fichier "<nom utilisateur>Parametres.json")
-    public static func lireParam(_ user : Utilisateur) -> Parametres? {
-        // récupere l'url du fichier
-        let leFileManager = FileManager.default
-        let urls = leFileManager.urls(for: .documentDirectory ,in: .userDomainMask )
-        let urlFichier = urls.first!.appendingPathComponent( "\(user.nomUtilisateur)Parametres.json" )
-        
-        // si le fichier existe
-        if ( leFileManager.fileExists(atPath : urlFichier.path) ) {
-            
-            let data = try! Data( contentsOf : urlFichier )// charge le fichier
-            
-            let decoder = JSONDecoder( )
-            let retour : [Parametres]? = try? decoder.decode( [Parametres].self , from : data )// décode en objet de la classe
-            
-            if ( retour?.isEmpty == nil ) {  
-                return nil
-            }else{
-                return retour![0]
-            }
-        }else{
-            return nil// renvoi nil si le fichier n'existe pas
+    public static func ecrireParam(_ user: Utilisateur, _ lesParametres: Parametres) {
+        let fileManager = FileManager.default
+        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        let fileURL = urls.first!.appendingPathComponent("\(user.getNomFormate())Parametres.json")
+
+        let encoder = JSONEncoder()
+        if let dataToSave = try? encoder.encode(lesParametres) {
+            fileManager.createFile(atPath: fileURL.path, contents: dataToSave, attributes: nil)
         }
+    }
+
+    public static func lireParam(_ user: Utilisateur) -> Parametres? {
+        let fileManager = FileManager.default
+        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        let fileURL = urls.first!.appendingPathComponent("\(user.getNomFormate())Parametres.json")
+
+        guard fileManager.fileExists(atPath: fileURL.path),
+              let data = try? Data(contentsOf: fileURL),
+              let param = try? JSONDecoder().decode(Parametres.self, from: data)
+        else {
+            return nil
+        }
+
+        return param
     }
     
     // renvoi toutes les données de l'instance dans un String formaté
