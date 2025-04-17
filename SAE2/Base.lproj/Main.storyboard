@@ -140,6 +140,23 @@
             </objects>
             <point key="canvasLocation" x="1796" y="1230"/>
         </scene>
+        <!--Statistiques-->
+        <scene sceneID="02a-Xy-Cpt">
+            <objects>
+                <navigationController id="AGm-Zc-Vzx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Statistiques" image="chart.pie.fill" catalog="system" id="073-Br-XRJ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HxD-ly-dRa">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="p2T-64-MqM" kind="relationship" relationship="rootViewController" id="gff-XG-atw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wu1-h3-DOF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711" y="1230"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sDo-aZ-XpD">
             <objects>
@@ -152,7 +169,7 @@
                     <connections>
                         <segue destination="Kcu-hY-UUR" kind="relationship" relationship="viewControllers" id="DG4-rh-00Z"/>
                         <segue destination="uJK-SD-b34" kind="relationship" relationship="viewControllers" id="1ep-m2-sQm"/>
-                        <segue destination="p2T-64-MqM" kind="relationship" relationship="viewControllers" id="L56-zZ-jQw"/>
+                        <segue destination="AGm-Zc-Vzx" kind="relationship" relationship="viewControllers" id="WnC-D5-qS3"/>
                         <segue destination="kp6-o1-nR6" kind="relationship" relationship="viewControllers" id="egw-Zi-0eB"/>
                     </connections>
                 </tabBarController>
@@ -168,21 +185,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="Goy-7w-KkG">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Statistiques" id="rtr-wg-m7Y"/>
-                            </items>
-                        </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SaQ-Ue-QkD">
-                                <rect key="frame" x="0.0" y="94" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="statCell" textLabel="2Yo-qw-lu2" style="IBUITableViewCellStyleDefault" id="SaQ-Ue-QkD" customClass="StatsCell" customModule="SAE2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SaQ-Ue-QkD" id="ytx-qj-lQJ">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Yo-qw-lu2">
+                                            <rect key="frame" x="20" y="0.0" width="353" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Qk9-6t-aUo" kind="show" identifier="statSegue" id="kAi-du-QrW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -191,10 +213,21 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Stat" image="chart.pie.fill" catalog="system" id="Rh5-43-ihz"/>
+                    <navigationItem key="navigationItem" title="Statistiques" id="OJ0-IN-dY6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAu-ie-ZP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="711" y="1230"/>
+            <point key="canvasLocation" x="708" y="1890"/>
+        </scene>
+        <!--Stat Hosting Controller-->
+        <scene sceneID="yBn-Ay-HcI">
+            <objects>
+                <hostingController id="Qk9-6t-aUo" customClass="StatHostingController" customModule="SAE2" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="9ns-TX-OYc"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qOJ-MJ-bej" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709" y="2555"/>
         </scene>
     </scenes>
     <resources>

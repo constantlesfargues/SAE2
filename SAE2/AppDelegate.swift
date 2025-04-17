@@ -11,7 +11,12 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    public static var stats: [[Point]] = [
+        [Point(0,0),Point(1,1),Point(2,2)],
+        [Point(10,1),Point(1,3),Point(2,5)]
+    ]
+    
+    public static var statIndex:Int = 0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
