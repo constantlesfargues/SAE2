@@ -18,10 +18,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     public static var statIndex:Int = 0
 
+    
+    
+    // Les Utilisateurs
+    // le premier ( AppDelegate.users[0] ) est celui actuelement utilisé
+    public static var users : [Utilisateur] = [Utilisateur("initial-test")]
+    
+    // Parametres de l'utilisateur actuel
+    public static var param : Parametres = Parametres()
+    
+    // Données de l'utilisateur actuel
+    public static var fluxs : [Flux] = []
+    
+    
+    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // récupere les Utilisateurs dans le JSON
+        let utilisateursLu = Utilisateur.lireUtilisateur()
+        if ( utilisateursLu != nil ){
+            AppDelegate.users = utilisateursLu!
+        }else{
+            Utilisateur.ecrireUtilisateur(AppDelegate.users)
+        }
+        
+        // récupere les données (Fluxs, Parametres) de l'utilisateur actuel
+        AppDelegate.updateDonneesUser()
+        
         return true
     }
+    
+    public static func updateDonneesUser(){
+        // récupere les parametres dans le JSON de l'utilisateur
+        // crée le fichier avec les parametres de base si il n'existe pas
+        let parametresLu = Parametres.lireParam(AppDelegate.users[0])
+        if ( parametresLu != nil ){
+            AppDelegate.param = parametresLu!
+        }else{
+            Parametres.ecrireParam(AppDelegate.users[0], AppDelegate.param)
+        }
+        
+        // récupere les Fluxs dans le JSON de l'utilisateur
+        // crée le fichier avec aucuns Fluxs si il n'existe pas
+        let fluxsLu = Flux.lireFlux(AppDelegate.users[0])
+        if ( parametresLu != nil ){
+            AppDelegate.fluxs = fluxsLu!
+        }else{
+            Flux.ecrireFlux(AppDelegate.users[0], AppDelegate.fluxs)
+        }
+    }
+    
+    public static func changeUtilisateur(_ indiceUtilisateur : Int){
+        // change le premier utilisateur dans la liste users
+        let userCo : Utilisateur = AppDelegate.users.remove(at: indiceUtilisateur)// supr & recup l'user voulu
+        AppDelegate.users.insert(userCo, at: 0)// le place en premiere position
+        Utilisateur.ecrireUtilisateur(AppDelegate.users)// actualise le JSON
+        
+        AppDelegate.updateDonneesUser()// récupere les données du nouveau utilisateur sélectioné
+    }
+    
 
     // MARK: UISceneSession Lifecycle
 
