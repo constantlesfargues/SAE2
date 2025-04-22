@@ -106,6 +106,9 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBAction func tapSuprimerUtilisateur(_ sender: Any) {
         let indiceUserSupr : Int = UtilisateurPicker.selectedRow(inComponent: 0)// récupere l'indice de l'Utilisateur Actuel
         
+        Flux.ecrireFlux(AppDelegate.users[indiceUserSupr], [])
+        Parametres.ecrireParam(AppDelegate.users[indiceUserSupr], Parametres(isNull:true) )
+        
         AppDelegate.users.remove(at: indiceUserSupr)// suprime l'utilisateur d'indice sélectioné
     
         Utilisateur.ecrireUtilisateur(AppDelegate.users)// actualise le JSON avec les utilisateurs actuels
@@ -135,7 +138,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     // met tout les champs des parametres a la valeur actuele des parametres
     public func resetInputParam(){
-        modeSombre.setOn(AppDelegate.param.modeSombre, animated: true)
+        modeSombre.setOn(AppDelegate.param.modeSombre!, animated: true)
     }
     
 }
