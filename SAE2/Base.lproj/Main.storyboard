@@ -28,12 +28,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Ajouter Flux"/>
+                                <connections>
+                                    <action selector="tapSurAjouter:" destination="FDy-AK-6d9" eventType="touchUpInside" id="qXg-sP-o9y"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnk-pN-OCj">
                                 <rect key="frame" x="47" y="628" width="83" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Annuler"/>
+                                <connections>
+                                    <action selector="tapSurAnnuler:" destination="FDy-AK-6d9" eventType="touchUpInside" id="bxR-Uy-vWv"/>
+                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="G2N-S1-70l">
                                 <rect key="frame" x="69" y="227" width="249" height="32"/>
@@ -72,6 +78,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Retour"/>
+                                <connections>
+                                    <action selector="tapSurRetour:" destination="FDy-AK-6d9" eventType="touchUpInside" id="L8Q-s3-ENr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="brn-Ao-cCW"/>
@@ -79,9 +88,6 @@
                     </view>
                     <connections>
                         <outlet property="dateFluxDP" destination="6nz-BG-60U" id="0Fv-ZD-L40"/>
-                        <outlet property="tapSurAjouter" destination="oUh-Uz-Dqo" id="nTH-vB-Akk"/>
-                        <outlet property="tapSurAnnuler" destination="Gnk-pN-OCj" id="hgs-gP-KUZ"/>
-                        <outlet property="tapSurRetour" destination="bN0-oF-NWg" id="c2P-Zw-bOA"/>
                         <outlet property="titreFluxTF" destination="cmZ-uY-7JX" id="YXL-Wf-6HC"/>
                         <outlet property="typeFluxSC" destination="G2N-S1-70l" id="Ooi-wN-YpL"/>
                     </connections>
@@ -148,7 +154,6 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Flux" image="eurosign" catalog="system" id="dhn-I0-eKd"/>
                     <connections>
-                        <segue destination="C3Z-Lc-wnz" kind="show" id="XWR-62-5Nn"/>
                         <segue destination="FDy-AK-6d9" kind="show" id="dn3-yO-n40"/>
                     </connections>
                 </tableViewController>
@@ -187,9 +192,6 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Historique" image="clock.fill" catalog="system" id="iPh-dY-QSV"/>
-                    <connections>
-                        <segue destination="C3Z-Lc-wnz" kind="show" id="yc8-dv-aMc"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79q-cN-KTL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,7 +202,7 @@
             <objects>
                 <viewController title="+Infos Flux/Historique" id="C3Z-Lc-wnz" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="121-Pt-bW9">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="QeA-qx-Eck"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -209,14 +211,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="304-bT-Dun" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-732" y="2012"/>
+            <point key="canvasLocation" x="2715" y="2145"/>
         </scene>
         <!--+Infos Statistiques-->
         <scene sceneID="uDR-Gt-RB6">
             <objects>
                 <viewController title="+Infos Statistiques" id="ao8-Jo-nfp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="66v-En-tPD">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="j9c-P6-7Zc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -225,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kez-4O-8Ew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="711" y="2012"/>
+            <point key="canvasLocation" x="711" y="2144"/>
         </scene>
         <!--Parametres-->
         <scene sceneID="dub-j5-mcl">
@@ -348,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2a-aa-JGR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1795" y="2012"/>
+            <point key="canvasLocation" x="1795" y="2144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sDo-aZ-XpD">
@@ -401,18 +403,12 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Stat" image="chart.pie.fill" catalog="system" id="Rh5-43-ihz"/>
-                    <connections>
-                        <segue destination="ao8-Jo-nfp" kind="show" id="86F-dW-jjT"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAu-ie-ZP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="711" y="1230"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="XWR-62-5Nn"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="chart.pie.fill" catalog="system" width="128" height="123"/>
         <image name="clock.fill" catalog="system" width="128" height="123"/>

@@ -10,15 +10,20 @@ import UIKit
 class AjouterFluxViewController: UIViewController {
     
     
-    @IBOutlet weak var tapSurRetour: UIButton!
     @IBOutlet weak var typeFluxSC: UISegmentedControl!
     @IBOutlet weak var titreFluxTF: UITextField!
     @IBOutlet weak var dateFluxDP: UIDatePicker!
-    @IBOutlet weak var tapSurAnnuler: UIButton!
-    @IBOutlet weak var tapSurAjouter: UIButton!
     
     
     
+    @IBAction func tapSurAnnuler(_ sender: Any) {
+    }
+    
+    @IBAction func tapSurAjouter(_ sender: Any) {
+    }
+    
+    @IBAction func tapSurRetour(_ sender: Any) {
+    }
     
 
     override func viewDidLoad() {
