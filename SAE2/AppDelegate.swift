@@ -59,6 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    // écrit les données actuelles sur 
+    public static func actualiserJSON(){
+        Flux.ecrireFlux(AppDelegate.users[0], fluxs)
+        Parametres.ecrireParam(AppDelegate.users[0], param)
+        // rajouter les stat
+    }
+    
     public static func changeUtilisateur(_ indiceUtilisateur : Int){
         // change le premier utilisateur dans la liste users
         let userCo : Utilisateur = AppDelegate.users.remove(at: indiceUtilisateur)// supr & recup l'user voulu
