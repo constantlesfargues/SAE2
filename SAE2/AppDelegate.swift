@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    // écrit les données actuelles sur 
+    // écrit les données actuelles sur le JSON
     public static func actualiserJSON(){
         Flux.ecrireFlux(AppDelegate.users[0], fluxs)
         Parametres.ecrireParam(AppDelegate.users[0], param)
