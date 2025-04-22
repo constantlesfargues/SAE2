@@ -8,6 +8,88 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Ajouter Flux-->
+        <scene sceneID="VZY-aI-pUS">
+            <objects>
+                <viewController title="Ajouter Flux" id="FDy-AK-6d9" customClass="AjouterFluxViewController" customModule="SAE2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AlC-Zp-svh" customClass="View">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rentrez votre type de flux : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMw-MW-a1m">
+                                <rect key="frame" x="92" y="198" width="209" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUh-Uz-Dqo">
+                                <rect key="frame" x="243" y="628" width="115" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Ajouter Flux"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnk-pN-OCj">
+                                <rect key="frame" x="47" y="628" width="83" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Annuler"/>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="G2N-S1-70l">
+                                <rect key="frame" x="69" y="227" width="249" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Entrée (Revenu)"/>
+                                    <segment title="Sortie (Dépense)"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rentrez un titre pour le flux : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSr-Yb-Kbu">
+                                <rect key="frame" x="87" y="323" width="219" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cmZ-uY-7JX">
+                                <rect key="frame" x="69" y="352" width="254" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choisissez une date pour le flux : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYT-ON-6Sz">
+                                <rect key="frame" x="69" y="472" width="255" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="6nz-BG-60U">
+                                <rect key="frame" x="-7" y="515" width="393" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bN0-oF-NWg">
+                                <rect key="frame" x="16" y="74" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Retour"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="brn-Ao-cCW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateFluxDP" destination="6nz-BG-60U" id="0Fv-ZD-L40"/>
+                        <outlet property="tapSurAjouter" destination="oUh-Uz-Dqo" id="nTH-vB-Akk"/>
+                        <outlet property="tapSurAnnuler" destination="Gnk-pN-OCj" id="hgs-gP-KUZ"/>
+                        <outlet property="tapSurRetour" destination="bN0-oF-NWg" id="c2P-Zw-bOA"/>
+                        <outlet property="titreFluxTF" destination="cmZ-uY-7JX" id="YXL-Wf-6HC"/>
+                        <outlet property="typeFluxSC" destination="G2N-S1-70l" id="Ooi-wN-YpL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6vj-yM-a5T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1906" y="2012"/>
+        </scene>
         <!--Flux-->
         <scene sceneID="wO8-vw-nje">
             <objects>
@@ -65,6 +147,10 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Flux" image="eurosign" catalog="system" id="dhn-I0-eKd"/>
+                    <connections>
+                        <segue destination="C3Z-Lc-wnz" kind="show" id="XWR-62-5Nn"/>
+                        <segue destination="FDy-AK-6d9" kind="show" id="dn3-yO-n40"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6b-mR-TsW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,10 +187,45 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Historique" image="clock.fill" catalog="system" id="iPh-dY-QSV"/>
+                    <connections>
+                        <segue destination="C3Z-Lc-wnz" kind="show" id="yc8-dv-aMc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79q-cN-KTL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-251" y="1230"/>
+        </scene>
+        <!--+Infos Flux/Historique-->
+        <scene sceneID="NV7-7Q-EYk">
+            <objects>
+                <viewController title="+Infos Flux/Historique" id="C3Z-Lc-wnz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="121-Pt-bW9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="QeA-qx-Eck"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Wfe-nc-DiQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="304-bT-Dun" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-732" y="2012"/>
+        </scene>
+        <!--+Infos Statistiques-->
+        <scene sceneID="uDR-Gt-RB6">
+            <objects>
+                <viewController title="+Infos Statistiques" id="ao8-Jo-nfp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="66v-En-tPD">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="j9c-P6-7Zc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xad-Fs-jac"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kez-4O-8Ew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711" y="2012"/>
         </scene>
         <!--Parametres-->
         <scene sceneID="dub-j5-mcl">
@@ -206,11 +327,28 @@
                         <outlet property="UtilisateurPicker" destination="RUd-Tj-F3y" id="ndb-UY-3BT"/>
                         <outlet property="boutonSuprimer" destination="pGn-d7-gpL" id="1Vz-gu-N9Y"/>
                         <outlet property="modeSombre" destination="xOH-h9-drb" id="KDN-Bc-wSI"/>
+                        <segue destination="4uy-dh-VsI" kind="show" id="3Eq-TA-37r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcD-jy-bTm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1794.6564885496182" y="1229.5774647887324"/>
+        </scene>
+        <!--+Infos Paramètres-->
+        <scene sceneID="eej-wA-3l3">
+            <objects>
+                <viewController title="+Infos Paramètres" id="4uy-dh-VsI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PKr-ej-L4j">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="FzW-Od-WA9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aFg-Px-9MN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2a-aa-JGR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1795" y="2012"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sDo-aZ-XpD">
@@ -263,12 +401,18 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Stat" image="chart.pie.fill" catalog="system" id="Rh5-43-ihz"/>
+                    <connections>
+                        <segue destination="ao8-Jo-nfp" kind="show" id="86F-dW-jjT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAu-ie-ZP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="711" y="1230"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="XWR-62-5Nn"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="chart.pie.fill" catalog="system" width="128" height="123"/>
         <image name="clock.fill" catalog="system" width="128" height="123"/>
