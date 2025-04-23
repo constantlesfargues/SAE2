@@ -11,14 +11,24 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    public static var stats: [[Point]] = [
-        [Point(0,0),Point(1,1),Point(2,2)],
-        [Point(10,1),Point(1,3),Point(2,5)]
+    public static var stats: [Stat] = [
+        Stat("tag1","stat1",[Point(0,0),Point(1,1)],0),
+        Stat("tag2","stat2",[Point(0,0),Point(1,2)],1)
     ]
     
-    public static var statIndex:Int = 0
-
+    public static func getTags()->[String] {
+        var tags : Set<String> = []
+        for stat in stats {
+            if let tag = stat.tag {
+                tags.insert(tag)
+            }
+        }
+        var tagsArr = Array(tags)
+        tagsArr.insert("tous",at:0)
+        return tagsArr
+    }
     
+    public static var statIndex:Int = 0
     
     // Les Utilisateurs
     // le premier ( AppDelegate.users[0] ) est celui actuelement utilisé
@@ -29,9 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Données de l'utilisateur actuel
     public static var fluxs : [Flux] = []
-    
-    
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

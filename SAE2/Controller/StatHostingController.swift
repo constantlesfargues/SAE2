@@ -9,12 +9,6 @@ import UIKit
 import SwiftUI
 import Charts
 
-
-
-#Preview {
-    StatUIView()
-}
-
 class StatHostingController: UIHostingController<StatUIView> {
     
     required init?(coder: NSCoder) {
@@ -23,13 +17,12 @@ class StatHostingController: UIHostingController<StatUIView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(AppDelegate.statIndex)
     }
 }
 
 struct StatUIView: View {
     var body: some View {
-        Chart(AppDelegate.stats[AppDelegate.statIndex] ,id:\.x) { item in
+        Chart(AppDelegate.stats[AppDelegate.statIndex].points! ,id:\.x) { item in
             LineMark(
                 x: .value("x",item.x),
                 y: .value("y",item.y)
