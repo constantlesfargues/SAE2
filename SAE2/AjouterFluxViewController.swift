@@ -29,6 +29,9 @@ class AjouterFluxViewController: UIViewController {
         var leNom : String
         var laDate : Date
         var leMontant : Float
+        var lesGroupes : [Groupe]
+        var laFreq : Int
+        var laDuree : Int
         
         if typeFluxSC.selectedSegmentIndex == 0{
             leType = "entree"
@@ -46,6 +49,8 @@ class AjouterFluxViewController: UIViewController {
         
         testLB.text = "Type : \(leType) \n Nom : \(leNom) \n Date : \(laDate) \n Montant : \(leMontant)"
         
+        var leNouveauFlux : Flux
+        leNouveauFlux = Flux(leNom, leMontant, leType, laDate, lesGroupes, laFreq, laDuree)
         
         
     }
