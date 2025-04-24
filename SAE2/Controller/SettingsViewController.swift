@@ -8,7 +8,6 @@
 import UIKit
 
 class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    
     // roue de sélection de l'utilisateur
     @IBOutlet weak var UtilisateurPicker: UIPickerView!
     // Outlet pour désactiver le bouton suprimer
@@ -100,6 +99,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         alertSupr.addAction(cancelActionSupr)
         alertSupr.addAction(saveActionSupr)
         
+        SceneDelegate.actualiserModeCouleur() // a metre dans chaque viewDidLoad au cas ou
     }
     
     // requis pour controler la roue d'affichage des Utilisateurs
@@ -129,6 +129,8 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         UtilisateurPicker.selectRow(0, inComponent: 0, animated: true)
         
         UtilisateurPicker.reloadAllComponents()// actualise l'affichage des Utilisateurs
+        
+        SceneDelegate.actualiserModeCouleur()
     }
     
     // Appuis sur le bouton "Ajouter" (un Utilisateur)
@@ -148,6 +150,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         // actualise le JSON
         Parametres.ecrireParam(AppDelegate.users[0], AppDelegate.param)
+        SceneDelegate.actualiserModeCouleur()
     }
     
     // Appuis sur le bouton "Annuler"

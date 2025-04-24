@@ -36,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // récupere les données (Fluxs, Parametres) de l'utilisateur actuel
         AppDelegate.updateDonneesUser()
         
+        SceneDelegate.actualiserModeCouleur()
+        
         return true
     }
     

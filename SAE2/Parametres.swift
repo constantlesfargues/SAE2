@@ -4,7 +4,7 @@ import Foundation
 class Parametres : Codable {
     
     // tout les parametres de l'app
-    public var modeSombre : Bool?
+    public var modeSombre : Bool? = false
     // ajouter les parametres
     
     
@@ -46,7 +46,7 @@ class Parametres : Codable {
     
     // renvoi toutes les données de l'instance dans un String formaté
     public func enChaine() -> String{
-        return "\(modeSombre)"
+        return "\(modeSombre!)"
     }
     
     
