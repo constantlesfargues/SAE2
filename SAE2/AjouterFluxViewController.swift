@@ -11,24 +11,51 @@ class AjouterFluxViewController: UIViewController {
     
     
     @IBOutlet weak var typeFluxSC: UISegmentedControl!
-    @IBOutlet weak var titreFluxTF: UITextField!
+    @IBOutlet weak var nomFluxTF: UITextField!
     @IBOutlet weak var dateFluxDP: UIDatePicker!
+    @IBOutlet weak var montantFluxTF: UITextField!
     
-    
+    @IBOutlet weak var testLB: UILabel!
     
     @IBAction func tapSurAnnuler(_ sender: Any) {
+        nomFluxTF.text = ""
+        montantFluxTF.text = ""
+        typeFluxSC.selectedSegmentIndex = 0
+        dateFluxDP.date = Date()
     }
     
     @IBAction func tapSurAjouter(_ sender: Any) {
+        var leType : String
+        var leNom : String
+        var laDate : Date
+        var leMontant : Float
+        
+        if typeFluxSC.selectedSegmentIndex == 0{
+            leType = "entree"
+        }else{
+            leType = "sortie"
+        }
+        leNom = nomFluxTF.text!
+        if let montant = Float(montantFluxTF.text!) {
+            leMontant = montant
+        }else {
+            return
+        }
+        leMontant = abs(Float(montantFluxTF.text!)!)
+        laDate = dateFluxDP.date
+        
+        testLB.text = "Type : \(leType) \n Nom : \(leNom) \n Date : \(laDate) \n Montant : \(leMontant)"
+        
+        
+        
     }
     
     @IBAction func tapSurRetour(_ sender: Any) {
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
