@@ -4,13 +4,18 @@ import Foundation
 class Parametres : Codable {
     
     // tout les parametres de l'app
-    public var modeSombre : Bool
+    public var modeSombre : Bool?
     // ajouter les parametres
     
     
     // constructeur (parametres initiaux)
     public init(){
         modeSombre = false
+    }
+    public init( isNull : Bool){
+        if(isNull){
+            modeSombre = nil
+        }
     }
     
     public static func ecrireParam(_ user: Utilisateur, _ lesParametres: Parametres) {

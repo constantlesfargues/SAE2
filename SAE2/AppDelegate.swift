@@ -39,6 +39,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    static func creerJeuDEssaiFlux() {
+        // Crée quelques groupes
+        let groupe1 = Groupe(nomGroupe: "Famille")
+        let groupe2 = Groupe(nomGroupe: "Travail")
+        let groupe3 = Groupe(nomGroupe: "Loisir")
+
+        // Crée des flux
+        let dateActuelle = Date()
+
+        let flux1 = Flux(
+            nomFlux: "Salaire",
+            montantFlux: 2500,
+            typeFlux: "Entrée",
+            dateFlux: dateActuelle,
+            groupesFlux: [groupe2],
+            frequenceFlux: 30,
+            dureeFlux: 360
+        )
+
+        let flux2 = Flux(
+            nomFlux: "Netflix",
+            montantFlux: 15.99,
+            typeFlux: "Sortie",
+            dateFlux: dateActuelle,
+            groupesFlux: [groupe3],
+            frequenceFlux: 30,
+            dureeFlux: 360
+        )
+
+        let flux3 = Flux(
+            nomFlux: "Cadeau",
+            montantFlux: 100,
+            typeFlux: "Sortie",
+            dateFlux: dateActuelle,
+            groupesFlux: [groupe1],
+            frequenceFlux: 0,
+            dureeFlux: 0
+        )
+
+        // Crée un utilisateur test (déjà créé dans AppDelegate.users[0])
+        let utilisateurTest = AppDelegate.users[0]
+
+        // Écrit les flux dans le JSON
+        Flux.ecrireFlux(AppDelegate.users[0], [flux1, flux2, flux3])
+
+        print("✅ Jeu d’essai écrit dans le fichier JSON de l’utilisateur.")
+    }
+    
     public static func updateDonneesUser(){
         // récupere les parametres dans le JSON de l'utilisateur
         // crée le fichier avec les parametres de base si il n'existe pas
@@ -57,6 +105,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             Flux.ecrireFlux(AppDelegate.users[0], AppDelegate.fluxs)
         }
+    }
+    
+    // écrit les données actuelles sur le JSON
+    public static func actualiserJSON(){
+        Flux.ecrireFlux(AppDelegate.users[0], fluxs)
+        Parametres.ecrireParam(AppDelegate.users[0], param)
+        // rajouter les stat
     }
     
     public static func changeUtilisateur(_ indiceUtilisateur : Int){
