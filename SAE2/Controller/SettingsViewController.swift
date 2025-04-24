@@ -11,15 +11,16 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     // roue de sélection de l'utilisateur
     @IBOutlet weak var UtilisateurPicker: UIPickerView!
-    
     // Outlet pour désactiver le bouton suprimer
     @IBOutlet weak var boutonSuprimer: UIButton!
     
+    // switch du mode sombre
     @IBOutlet weak var modeSombre: UISwitch!
-    
-    
+
     // pop up lors de l'ajout d'un Utilisateur
     public var alertAjout : UIAlertController!
+    // pop up de la supression d'un Utilisateur
+    public var alertSupr : UIAlertController!
     
     
     override func viewDidLoad() {
@@ -38,6 +39,10 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             boutonSuprimer.isEnabled = false
         }
         
+        
+        /*
+         Pop up d'ajout d'Utilisateur
+         */
         // Setup de la popup d'ajout d'Utilisateur :
         alertAjout = UIAlertController(title: "Ajouter un utilisateur", message: "Entrez le nom d'utilisateur", preferredStyle: .alert)
         alertAjout.addTextField { (textField) in
@@ -66,6 +71,35 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         alertAjout.addAction(cancelAction)
         alertAjout.addAction(saveAction)
         
+        
+        /*
+         Pop up de supréssion d'Utilisateur
+         */
+        // Setup de la popup d'ajout d'Utilisateur :
+        alertSupr = UIAlertController(title: "Suprimer un utilisateur", message: "Voulez vous vraiment suprimer l'utilisateur", preferredStyle: .alert)
+        // Ajout des boutons de la pop up
+        let cancelActionSupr = UIAlertAction(title: "Annuler", style: .cancel, handler: nil)
+        let saveActionSupr = UIAlertAction(title: "Suprimer", style: .default) { _ in
+            
+            let indiceUserSupr : Int = self.UtilisateurPicker.selectedRow(inComponent: 0)// récupere l'indice de l'Utilisateur Actuel
+            
+            Flux.ecrireFlux(AppDelegate.users[indiceUserSupr], [])
+            Parametres.ecrireParam(AppDelegate.users[indiceUserSupr], Parametres(isNull:true) )
+            
+            AppDelegate.users.remove(at: indiceUserSupr)// suprime l'utilisateur d'indice sélectioné
+        
+            Utilisateur.ecrireUtilisateur(AppDelegate.users)// actualise le JSON avec les utilisateurs actuels
+            
+            self.UtilisateurPicker.reloadAllComponents()// actualise l'affichage des Utilisateurs
+            
+            // Empeche la supréssion d'Utilisateur si il n'y en a qu'un
+            if (AppDelegate.users.count <= 1){
+                self.boutonSuprimer.isEnabled = false
+            }
+        }
+        alertSupr.addAction(cancelActionSupr)
+        alertSupr.addAction(saveActionSupr)
+        
     }
     
     // requis pour controler la roue d'affichage des Utilisateurs
@@ -81,6 +115,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return AppDelegate.users[row].nomUtilisateur
     }
+    
     
     // Appuis sur le bouton "Sélectioner" (un Utilisateur)
     @IBAction func tapSelectioner(_ sender: Any) {
@@ -99,26 +134,11 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // Appuis sur le bouton "Ajouter" (un Utilisateur)
     @IBAction func tapAjouterUtilisateur(_ sender: Any) {
         present(alertAjout, animated: true, completion: nil)// appelle la pop up d'ajout d'Utilisateur
-        
     }
     
     // Appuis sur le bouton "Suprimer" (un Utilisateur)
     @IBAction func tapSuprimerUtilisateur(_ sender: Any) {
-        let indiceUserSupr : Int = UtilisateurPicker.selectedRow(inComponent: 0)// récupere l'indice de l'Utilisateur Actuel
-        
-        Flux.ecrireFlux(AppDelegate.users[indiceUserSupr], [])
-        Parametres.ecrireParam(AppDelegate.users[indiceUserSupr], Parametres(isNull:true) )
-        
-        AppDelegate.users.remove(at: indiceUserSupr)// suprime l'utilisateur d'indice sélectioné
-    
-        Utilisateur.ecrireUtilisateur(AppDelegate.users)// actualise le JSON avec les utilisateurs actuels
-        
-        UtilisateurPicker.reloadAllComponents()// actualise l'affichage des Utilisateurs
-        
-        // Empeche la supréssion d'Utilisateur si il n'y en a qu'un
-        if (AppDelegate.users.count <= 1){
-            boutonSuprimer.isEnabled = false
-        }
+        present(alertSupr, animated: true, completion: nil)// appelle la pop up d'ajout d'Utilisateur
     }
     
     // Appuis sur le bouton "Appliquer" (les parametres)
