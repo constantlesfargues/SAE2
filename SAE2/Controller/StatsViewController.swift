@@ -22,6 +22,22 @@ class StatsCell: UITableViewCell {
 class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerViewDataSource {
     private var tags:[String] = []
     private var stats:[Stat] = []
+    private var filtre:String? = nil
+    public var alertAjout : UIAlertController!
+    
+    public var tagRow:Int = 0
+    
+    public var alertResRecherche : UIAlertController!
+    
+    @IBAction func tapSearch(_ sender: Any) {
+        present(alertAjout, animated: true,completion: nil)
+    }
+    
+    @IBAction func tapReinit(_ sender: Any) {
+        filtre = nil
+        updateStats()
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -34,13 +50,13 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
         return tags[row]
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if row == 0 {
-            stats = AppDelegate.stats
-        }else {
-            stats = []
-            for stat in AppDelegate.stats {
-                if stat.tag == tags[row] {
+    func updateStats() {
+        stats = []
+        for stat in AppDelegate.stats {
+            if filtre == nil || stat.name!.contains(filtre!) {
+                if tagRow == 0 {
+                    stats.append(stat)
+                }else if stat.tag == tags[tagRow] {
                     stats.append(stat)
                 }
             }
@@ -48,7 +64,14 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
         self.tableView.reloadData()
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        tagRow = row
+        updateStats()
+        self.tableView.reloadData()
+    }
+    
     @IBOutlet weak var tagPV: UIPickerView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +79,28 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
         stats = AppDelegate.stats
         tagPV.delegate = self
         tagPV.dataSource = self
+        
+        // Setup de la popup de recherche de stats :
+        alertAjout = UIAlertController(title: "filtrer les statistiques", message: "texte par lequel filtrer:", preferredStyle: .alert)
+        alertAjout.addTextField { (textField) in
+            textField.placeholder = "filtre"
+        }
+        // Ajout des boutons de la pop up
+        let cancelAction = UIAlertAction(title: "Annuler", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Chercher", style: .default) { _ in
+            //nom recherché
+            if self.alertAjout.textFields![0].text == "" {
+                self.filtre = nil
+            }else {
+                self.filtre = self.alertAjout.textFields![0].text
+                self.alertAjout.textFields![0].text = ""
+                print(self.filtre!)
+            }
+            self.updateStats()
+            
+        }
+        alertAjout.addAction(cancelAction)
+        alertAjout.addAction(saveAction)
         // Do any additional setup after loading the view.
     }
     

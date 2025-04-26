@@ -303,16 +303,32 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Stat" image="chart.pie.fill" catalog="system" id="Rh5-43-ihz"/>
                     <navigationItem key="navigationItem" title="Statistiques" id="OJ0-IN-dY6">
-                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="uH8-wk-SQ0">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="3A6-np-kWM">
-                                <rect key="frame" x="16" y="5" width="87" height="34.333333333333336"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" image="magnifyingglass" catalog="system"/>
-                            </button>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Item" style="plain" id="uH8-wk-SQ0">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="3A6-np-kWM">
+                                    <rect key="frame" x="16.000000000000007" y="5" width="49.666666666666664" height="34.333333333333336"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="gray" image="magnifyingglass" catalog="system"/>
+                                    <connections>
+                                        <action selector="tapSearch:" destination="p2T-64-MqM" eventType="touchUpInside" id="iba-xz-eZM"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="P1i-Gj-RKa">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="rFr-Dh-RdS">
+                                    <rect key="frame" x="73.666666666666686" y="5" width="62" height="34.333333333333336"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="gray" title="reinit"/>
+                                    <connections>
+                                        <action selector="tapReinit:" destination="p2T-64-MqM" eventType="touchUpInside" id="5Og-Sz-Rn4"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="zLi-jM-toB">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="gDF-Mc-FA7">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="gDF-Mc-FA7">
                                 <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>

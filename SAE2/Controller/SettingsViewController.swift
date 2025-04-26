@@ -21,7 +21,6 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // pop up lors de l'ajout d'un Utilisateur
     public var alertAjout : UIAlertController!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

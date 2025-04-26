@@ -8,6 +8,7 @@
 class Stat:Codable {
     public var name:String?
     public var points:[Point]?
+    public var type:String?
     public var tag:String?
     public var id:Int?
     init(_ tag:String,_ name:String,_ points:[Point],_ id:Int) {
