@@ -117,7 +117,7 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "statCell", for: indexPath) as! StatsCell
         cell.statName?.text = stats[indexPath.row].name
-        cell.i = indexPath.row
+        cell.i = stats[indexPath.row].id
         cell.reloadStats = self.tableView.reloadData
         return cell
     }

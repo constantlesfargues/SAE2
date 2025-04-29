@@ -10,6 +10,7 @@ import SwiftUI
 import Charts
 
 class Stat:Codable {
+    public var id:Int
     public var name:String
     public var type:String
     public var groupes:[Groupe]?
@@ -17,13 +18,14 @@ class Stat:Codable {
     public var dateMin:Date?
     public var dateMax:Date?
     public var tag:String?
-    public init(_ name:String
+    public init(id:Int,_ name:String
          ,_ type:String
          ,_ groupes:[Groupe]?
          ,_ typeFlux:String?
          ,_ dateMin:Date?
          ,_ dateMax:Date?
          ,_ tag:String?){
+        self.id = id
         self.name = name
         self.type = type
         self.groupes = groupes
