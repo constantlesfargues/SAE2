@@ -12,6 +12,21 @@ class Flux : Codable{
     public var frequenceFlux : Int // = 0 si non récurent
     public var dureeFlux : Int
     
+    public init(nomFlux : String
+                ,montantFlux : Float
+                ,typeFlux : String
+                ,dateFlux : Date
+                ,groupesFlux : [Groupe]
+                ,frequenceFlux : Int // = 0 si non récurent
+                ,dureeFlux : Int){
+        self.nomFlux = nomFlux
+        self.montantFlux = montantFlux
+        self.typeFlux = typeFlux
+        self.dateFlux = dateFlux
+        self.groupesFlux = groupesFlux
+        self.frequenceFlux = frequenceFlux
+        self.dureeFlux = dureeFlux
+    }
     
     // Sauvegarde les flux dans le fichier "<nom utilisateur>Flux.json"
     public static func ecrireFlux(_ user: Utilisateur, _ lesFlux: [Flux]) {

@@ -21,12 +21,7 @@ class StatHostingController: UIHostingController<StatUIView> {
 }
 
 struct StatUIView: View {
-    var body: some View {
-        Chart(AppDelegate.stats[AppDelegate.statIndex].points! ,id:\.x) { item in
-            LineMark(
-                x: .value("x",item.x),
-                y: .value("y",item.y)
-                )
-        }
+    var body:some View{
+        AppDelegate.stats[AppDelegate.statIndex].getChart(flux: AppDelegate.fluxs)
     }
 }

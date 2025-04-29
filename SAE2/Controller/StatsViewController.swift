@@ -10,10 +10,10 @@ import UIKit
 class StatsCell: UITableViewCell {
     @IBOutlet weak var statName: UILabel!
     @IBOutlet weak var removeBtn: UIButton!
-    public var idStat:Int = 0
+    public var i:Int = 0
     public var reloadStats:()->() = {}
     @IBAction func tapRemove(_ sender: Any) {
-        AppDelegate.stats.remove(at: idStat)
+        AppDelegate.stats.remove(at: i)
         removeBtn.isEnabled = false
         self.reloadStats()
     }
@@ -53,7 +53,7 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
     func updateStats() {
         stats = []
         for stat in AppDelegate.stats {
-            if filtre == nil || stat.name!.contains(filtre!) {
+            if filtre == nil || stat.name.contains(filtre!) {
                 if tagRow == 0 {
                     stats.append(stat)
                 }else if stat.tag == tags[tagRow] {
@@ -116,8 +116,8 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "statCell", for: indexPath) as! StatsCell
-        cell.statName?.text = stats[indexPath.row].name!
-        cell.idStat = stats[indexPath.row].id!
+        cell.statName?.text = stats[indexPath.row].name
+        cell.i = indexPath.row
         cell.reloadStats = self.tableView.reloadData
         return cell
     }
@@ -127,9 +127,21 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        AppDelegate.fluxs = [
+            Flux(nomFlux: "f3", montantFlux: 60, typeFlux: "sortie", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*99), groupesFlux: [], frequenceFlux: 0, dureeFlux: 0),
+            Flux(nomFlux: "f1", montantFlux: 50, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*100), groupesFlux: [Groupe("g2")], frequenceFlux: 0, dureeFlux: 0),
+            Flux(nomFlux: "f1", montantFlux: 40, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*101), groupesFlux: [Groupe("g2"),Groupe("g1")], frequenceFlux: 0, dureeFlux: 0),
+            
+            Flux(nomFlux: "f2", montantFlux: 30, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate:60*60*24*102), groupesFlux: [Groupe("g1")], frequenceFlux: 0, dureeFlux: 0),
+            Flux(nomFlux: "f2", montantFlux: 30, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate:60*60*24*103), groupesFlux: [Groupe("g2"),Groupe("g1")], frequenceFlux: 0, dureeFlux: 0),
+            Flux(nomFlux: "f3", montantFlux: 25, typeFlux: "sortie", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*104), groupesFlux: [], frequenceFlux: 0, dureeFlux: 0),
+            Flux(nomFlux: "f3", montantFlux: 25, typeFlux: "sortie", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*105), groupesFlux: [], frequenceFlux: 0, dureeFlux: 0)
+        ]
+        
         let cell = sender as! StatsCell
-        print(cell.idStat)
-        AppDelegate.statIndex = cell.idStat
+        print(cell.i)
+        AppDelegate.statIndex = cell.i
     }
 
 }

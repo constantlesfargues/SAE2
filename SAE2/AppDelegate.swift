@@ -12,10 +12,10 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     public static var stats: [Stat] = [
-        Stat("tag1","stat1",[Point(0,0),Point(1,1)],0),
-        Stat("tag2","stat2",[Point(0,0),Point(1,2)],1),
-        Stat("tag2","stat3",[Point(0,0),Point(1,2),Point(2,10)],2),
-        Stat("tag1","stat4",[Point(0,0),Point(4,4),Point(1,2)],3)
+        Stat("une tourte lol","pieMontant",nil,nil,nil,nil,"pie"),
+        Stat("une tourte petite","pieGroupe",nil,nil,nil,nil,"pie"),
+        Stat("une ligne de rats","line",nil,nil,nil,nil,"graph"),
+        Stat("une grande surface","area",nil,nil,nil,nil,"graph")
     ]
     
     public static func getTags()->[String] {
