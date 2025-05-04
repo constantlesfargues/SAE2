@@ -14,14 +14,16 @@ class AjouterFluxViewController: UIViewController {
     @IBOutlet weak var nomFluxTF: UITextField!
     @IBOutlet weak var dateFluxDP: UIDatePicker!
     @IBOutlet weak var montantFluxTF: UITextField!
-    
-    @IBOutlet weak var testLB: UILabel!
+    @IBOutlet weak var laFrequenceSC: UISegmentedControl!
+    @IBOutlet weak var estRecurrSC: UISegmentedControl!
     
     @IBAction func tapSurAnnuler(_ sender: Any) {
         nomFluxTF.text = ""
         montantFluxTF.text = ""
         typeFluxSC.selectedSegmentIndex = 0
         dateFluxDP.date = Date()
+        laFrequenceSC.selectedSegmentIndex = 0
+        estRecurrSC.selectedSegmentIndex = 0
     }
     
     @IBAction func tapSurAjouter(_ sender: Any) {
@@ -29,9 +31,9 @@ class AjouterFluxViewController: UIViewController {
         var leNom : String
         var laDate : Date
         var leMontant : Float
-        var lesGroupes : [Groupe]
-        var laFreq : Int
-        var laDuree : Int
+        var lesGroupes : [Groupe] = [Groupe(nomGroupe : "Restaurant")]
+        var laFreq : Int = 0
+        var laDuree : Int = 0
         
         if typeFluxSC.selectedSegmentIndex == 0{
             leType = "entree"
@@ -46,13 +48,28 @@ class AjouterFluxViewController: UIViewController {
         }
         leMontant = abs(Float(montantFluxTF.text!)!)
         laDate = dateFluxDP.date
-        
-        testLB.text = "Type : \(leType) \n Nom : \(leNom) \n Date : \(laDate) \n Montant : \(leMontant)"
+        var laFreqRecup : Int =
+        laFrequenceSC.selectedSegmentIndex
+        if estRecurrSC.selectedSegmentIndex == 1{
+            if laFreqRecup == 0{
+                laFreq = 1
+            }
+            else if laFreqRecup == 1{
+                laFreq = 7
+            }
+            else if laFreqRecup == 2{
+                laFreq = 30
+            }
+            else if laFreqRecup == 3{
+                laFreq = 365
+            }
+        }
+        else{
+        }
         
         var leNouveauFlux : Flux
-        leNouveauFlux = Flux(leNom, leMontant, leType, laDate, lesGroupes, laFreq, laDuree)
-        
-        
+        leNouveauFlux = Flux(nomFlux : leNom, montantFlux : leMontant, typeFlux: leType, dateFlux: laDate, groupesFlux : lesGroupes, frequenceFlux : laFreq, dureeFlux : laDuree)
+        Flux.ecrireFlux(AppDelegate.users[0], [leNouveauFlux])
     }
     
     @IBAction func tapSurRetour(_ sender: Any) {

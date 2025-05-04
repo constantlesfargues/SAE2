@@ -9,10 +9,10 @@ class Flux : Codable, Identifiable{
     public var groupesFlux : [Groupe]
     
     // seulement si il est récurent
-    public var frequenceFlux : DateInterval( // = 0 si non récurent
+    public var frequenceFlux : Int // = 0 si non récurent
     public var dureeFlux : Int = 0
     
-    public init(_ nomFlux: String,_ montantFlux: Float,_ typeFlux: String,_ dateFlux: Date,_ groupesFlux: [Groupe],_ frequenceFlux: Int,_ dureeFlux: Int) {
+    public init( nomFlux: String, montantFlux: Float, typeFlux: String, dateFlux: Date, groupesFlux: [Groupe], frequenceFlux: Int, dureeFlux: Int) {
         self.nomFlux = nomFlux
         self.montantFlux = montantFlux
         self.typeFlux = typeFlux
