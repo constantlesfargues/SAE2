@@ -131,6 +131,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eES-e5-IjN">
+                                <rect key="frame" x="96" y="723" width="200" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="brn-Ao-cCW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -142,6 +149,7 @@
                         <outlet property="montantFluxTF" destination="s7h-KT-yWx" id="bDZ-Fe-yJU"/>
                         <outlet property="nomFluxTF" destination="cmZ-uY-7JX" id="a4Q-Pg-Lgb"/>
                         <outlet property="typeFluxSC" destination="G2N-S1-70l" id="Ooi-wN-YpL"/>
+                        <outlet property="validationLB" destination="eES-e5-IjN" id="VTF-Wt-hHs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vj-yM-a5T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -168,6 +176,9 @@
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="gray" image="plus" catalog="system"/>
                                         </button>
+                                        <connections>
+                                            <action selector="tapSurAjouter:" destination="Kcu-hY-UUR" id="0mU-ag-Nbo"/>
+                                        </connections>
                                     </barButtonItem>
                                 </navigationItem>
                             </items>

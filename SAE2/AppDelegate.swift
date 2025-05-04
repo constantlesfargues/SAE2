@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let flux1 = Flux(
             nomFlux: "Salaire",
             montantFlux: 2500,
-            typeFlux: "entree",
+            typeFlux: "Entrée",
             dateFlux: dateActuelle,
             groupesFlux: [groupe2],
             frequenceFlux: 30,
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let flux2 = Flux(
             nomFlux: "Netflix",
             montantFlux: 15.99,
-            typeFlux: "sortie",
+            typeFlux: "Sortie",
             dateFlux: dateActuelle,
             groupesFlux: [groupe3],
             frequenceFlux: 30,
@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let flux3 = Flux(
             nomFlux: "Cadeau",
             montantFlux: 100,
-            typeFlux: "sortie",
+            typeFlux: "Sortie",
             dateFlux: dateActuelle,
             groupesFlux: [groupe1],
             frequenceFlux: 0,

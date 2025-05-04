@@ -16,6 +16,7 @@ class AjouterFluxViewController: UIViewController {
     @IBOutlet weak var montantFluxTF: UITextField!
     @IBOutlet weak var laFrequenceSC: UISegmentedControl!
     @IBOutlet weak var estRecurrSC: UISegmentedControl!
+    @IBOutlet weak var validationLB: UILabel!
     
     @IBAction func tapSurAnnuler(_ sender: Any) {
         nomFluxTF.text = ""
@@ -70,6 +71,7 @@ class AjouterFluxViewController: UIViewController {
         var leNouveauFlux : Flux
         leNouveauFlux = Flux(nomFlux : leNom, montantFlux : leMontant, typeFlux: leType, dateFlux: laDate, groupesFlux : lesGroupes, frequenceFlux : laFreq, dureeFlux : laDuree)
         Flux.ecrireFlux(AppDelegate.users[0], [leNouveauFlux])
+        validationLB.text="Le flux a bien été ajouté!"
     }
     
     @IBAction func tapSurRetour(_ sender: Any) {
