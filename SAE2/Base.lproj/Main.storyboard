@@ -13,7 +13,7 @@
             <objects>
                 <viewController title="Ajouter Flux" id="FDy-AK-6d9" customClass="AjouterFluxViewController" customModule="SAE2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AlC-Zp-svh" customClass="View">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rentrez votre type de flux : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMw-MW-a1m">
@@ -92,15 +92,6 @@
                                 </date>
                                 <locale key="locale" localeIdentifier="fr"/>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bN0-oF-NWg">
-                                <rect key="frame" x="16" y="74" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Retour"/>
-                                <connections>
-                                    <action selector="tapSurRetour:" destination="FDy-AK-6d9" eventType="touchUpInside" id="L8Q-s3-ENr"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rentrez le montant de votre flux : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Lu-hO-Ngg">
                                 <rect key="frame" x="70" y="337" width="257" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -142,6 +133,7 @@
                         <viewLayoutGuide key="safeArea" id="brn-Ao-cCW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wRH-Zz-QF7"/>
                     <connections>
                         <outlet property="dateFluxDP" destination="6nz-BG-60U" id="yw3-TX-SSj"/>
                         <outlet property="estRecurrSC" destination="Chg-KA-HkP" id="qUk-IT-mQs"/>
@@ -154,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vj-yM-a5T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1906.1068702290077" y="2011.9718309859156"/>
+            <point key="canvasLocation" x="-779" y="2830"/>
         </scene>
         <!--Flux-->
         <scene sceneID="wO8-vw-nje">
@@ -175,6 +167,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="gray" image="plus" catalog="system"/>
+                                            <connections>
+                                                <segue destination="FDy-AK-6d9" kind="show" id="yVG-2G-fnt"/>
+                                            </connections>
                                         </button>
                                         <connections>
                                             <action selector="tapSurAjouter:" destination="Kcu-hY-UUR" id="0mU-ag-Nbo"/>
@@ -199,13 +194,28 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Flux" image="eurosign" catalog="system" id="dhn-I0-eKd"/>
-                    <connections>
-                        <segue destination="FDy-AK-6d9" kind="show" identifier="afficheCreerFlux" id="dn3-yO-n40"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="ncN-Mj-N94"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6b-mR-TsW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-892" y="1230"/>
+            <point key="canvasLocation" x="-1259" y="2057"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="bCt-Cq-Z3k">
+            <objects>
+                <navigationController id="BPP-RE-cmR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="sgO-P5-6kk"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z2e-kR-mJi">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Kcu-hY-UUR" kind="relationship" relationship="rootViewController" id="fkT-CW-z7g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IHK-ER-l10" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1260" y="1230"/>
         </scene>
         <!--Historique-->
         <scene sceneID="UYZ-o4-ZLV">
@@ -388,7 +398,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Kcu-hY-UUR" kind="relationship" relationship="viewControllers" id="DG4-rh-00Z"/>
+                        <segue destination="BPP-RE-cmR" kind="relationship" relationship="viewControllers" id="Zih-j7-qLH"/>
                         <segue destination="gU3-1D-SDo" kind="relationship" relationship="viewControllers" id="XTG-EI-cqo"/>
                         <segue destination="p2T-64-MqM" kind="relationship" relationship="viewControllers" id="L56-zZ-jQw"/>
                         <segue destination="kp6-o1-nR6" kind="relationship" relationship="viewControllers" id="egw-Zi-0eB"/>

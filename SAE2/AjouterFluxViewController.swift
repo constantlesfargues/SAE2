@@ -49,7 +49,7 @@ class AjouterFluxViewController: UIViewController {
         }
         leMontant = abs(Float(montantFluxTF.text!)!)
         laDate = dateFluxDP.date
-        var laFreqRecup : Int =
+        let laFreqRecup : Int =
         laFrequenceSC.selectedSegmentIndex
         if estRecurrSC.selectedSegmentIndex == 1{
             if laFreqRecup == 0{
@@ -70,7 +70,8 @@ class AjouterFluxViewController: UIViewController {
         
         var leNouveauFlux : Flux
         leNouveauFlux = Flux(nomFlux : leNom, montantFlux : leMontant, typeFlux: leType, dateFlux: laDate, groupesFlux : lesGroupes, frequenceFlux : laFreq, dureeFlux : laDuree)
-        Flux.ecrireFlux(AppDelegate.users[0], [leNouveauFlux])
+        AppDelegate.fluxs.append(leNouveauFlux)
+        AppDelegate.actualiserJSON()
         validationLB.text="Le flux a bien été ajouté!"
     }
     
