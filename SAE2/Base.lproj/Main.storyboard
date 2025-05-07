@@ -59,7 +59,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6b-mR-TsW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-353" y="1230"/>
+            <point key="canvasLocation" x="-915" y="1230"/>
         </scene>
         <!--Parametres-->
         <scene sceneID="dub-j5-mcl">
@@ -167,6 +167,22 @@
             </objects>
             <point key="canvasLocation" x="1794.6564885496182" y="1229.5774647887324"/>
         </scene>
+        <!--Historique-->
+        <scene sceneID="mLo-Fg-aLy">
+            <objects>
+                <viewController id="5aT-cr-v1F" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hTZ-9E-gJx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gc0-G2-Vl1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Historique" id="PGX-nO-TJ1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JQx-Ds-FOe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-95" y="1230"/>
+        </scene>
         <!--Statistiques-->
         <scene sceneID="02a-Xy-Cpt">
             <objects>
@@ -195,7 +211,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Kcu-hY-UUR" kind="relationship" relationship="viewControllers" id="DG4-rh-00Z"/>
-                        <segue destination="uJK-SD-b34" kind="relationship" relationship="viewControllers" id="1ep-m2-sQm"/>
+                        <segue destination="5aT-cr-v1F" kind="relationship" relationship="viewControllers" id="7dR-qT-yOH"/>
                         <segue destination="AGm-Zc-Vzx" kind="relationship" relationship="viewControllers" id="WnC-D5-qS3"/>
                         <segue destination="kp6-o1-nR6" kind="relationship" relationship="viewControllers" id="egw-Zi-0eB"/>
                     </connections>
