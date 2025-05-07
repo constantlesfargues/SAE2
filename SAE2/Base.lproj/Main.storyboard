@@ -8,6 +8,146 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Ajouter Flux-->
+        <scene sceneID="VZY-aI-pUS">
+            <objects>
+                <viewController title="Ajouter Flux" id="FDy-AK-6d9" customClass="AjouterFluxViewController" customModule="SAE2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AlC-Zp-svh" customClass="View">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rentrez votre type de flux : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMw-MW-a1m">
+                                <rect key="frame" x="92" y="198" width="209" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUh-Uz-Dqo">
+                                <rect key="frame" x="234" y="660" width="115" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Ajouter Flux"/>
+                                <connections>
+                                    <action selector="tapSurAjouter:" destination="FDy-AK-6d9" eventType="touchUpInside" id="qXg-sP-o9y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnk-pN-OCj">
+                                <rect key="frame" x="60" y="660" width="83" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Annuler"/>
+                                <connections>
+                                    <action selector="tapSurAnnuler:" destination="FDy-AK-6d9" eventType="touchUpInside" id="bxR-Uy-vWv"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="G2N-S1-70l">
+                                <rect key="frame" x="69" y="227" width="249" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Entrée (Revenu)"/>
+                                    <segment title="Sortie (Dépense)"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Votre flux est-il récurrent?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMI-SN-8Sc">
+                                <rect key="frame" x="97" y="522" width="198" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Chg-KA-HkP">
+                                <rect key="frame" x="152" y="551" width="89" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Non"/>
+                                    <segment title="Oui"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rentrez un nom pour le flux : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSr-Yb-Kbu">
+                                <rect key="frame" x="87" y="266" width="223" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cmZ-uY-7JX">
+                                <rect key="frame" x="69" y="295" width="254" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choisissez une date pour le flux : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYT-ON-6Sz">
+                                <rect key="frame" x="69" y="415" width="255" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="6nz-BG-60U">
+                                <rect key="frame" x="-7" y="458" width="393" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-31626000">
+                                    <!--1999-12-31 23:00:00 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="fr"/>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rentrez le montant de votre flux : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Lu-hO-Ngg">
+                                <rect key="frame" x="70" y="337" width="257" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s7h-KT-yWx">
+                                <rect key="frame" x="69" y="366" width="254" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="J2F-FV-fSf">
+                                <rect key="frame" x="0.0" y="619" width="393" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Tous les jours"/>
+                                    <segment title="Toutes les semaines"/>
+                                    <segment title="Tous les mois"/>
+                                    <segment title="Tous les ans"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Si oui, à quelle fréquence?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izh-iS-LII">
+                                <rect key="frame" x="96" y="590" width="200" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eES-e5-IjN">
+                                <rect key="frame" x="96" y="723" width="200" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="brn-Ao-cCW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wRH-Zz-QF7"/>
+                    <connections>
+                        <outlet property="dateFluxDP" destination="6nz-BG-60U" id="yw3-TX-SSj"/>
+                        <outlet property="estRecurrSC" destination="Chg-KA-HkP" id="qUk-IT-mQs"/>
+                        <outlet property="laFrequenceSC" destination="J2F-FV-fSf" id="QTS-Mm-Gg5"/>
+                        <outlet property="montantFluxTF" destination="s7h-KT-yWx" id="bDZ-Fe-yJU"/>
+                        <outlet property="nomFluxTF" destination="cmZ-uY-7JX" id="a4Q-Pg-Lgb"/>
+                        <outlet property="typeFluxSC" destination="G2N-S1-70l" id="Ooi-wN-YpL"/>
+                        <outlet property="validationLB" destination="eES-e5-IjN" id="VTF-Wt-hHs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6vj-yM-a5T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-779" y="2830"/>
+        </scene>
         <!--Flux-->
         <scene sceneID="wO8-vw-nje">
             <objects>
@@ -27,7 +167,13 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="gray" image="plus" catalog="system"/>
+                                            <connections>
+                                                <segue destination="FDy-AK-6d9" kind="show" id="yVG-2G-fnt"/>
+                                            </connections>
                                         </button>
+                                        <connections>
+                                            <action selector="tapSurAjouter:" destination="Kcu-hY-UUR" id="0mU-ag-Nbo"/>
+                                        </connections>
                                     </barButtonItem>
                                 </navigationItem>
                             </items>
@@ -48,10 +194,28 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Flux" image="eurosign" catalog="system" id="dhn-I0-eKd"/>
+                    <navigationItem key="navigationItem" id="ncN-Mj-N94"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6b-mR-TsW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-892" y="1230"/>
+            <point key="canvasLocation" x="-1259" y="2057"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="bCt-Cq-Z3k">
+            <objects>
+                <navigationController id="BPP-RE-cmR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="sgO-P5-6kk"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z2e-kR-mJi">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Kcu-hY-UUR" kind="relationship" relationship="rootViewController" id="fkT-CW-z7g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IHK-ER-l10" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1260" y="1230"/>
         </scene>
         <!--Historique-->
         <scene sceneID="UYZ-o4-ZLV">
@@ -68,6 +232,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWu-cr-lnt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-73" y="1230"/>
+        </scene>
+        <!--+Infos Flux/Historique-->
+        <scene sceneID="NV7-7Q-EYk">
+            <objects>
+                <viewController title="+Infos Flux/Historique" id="C3Z-Lc-wnz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="121-Pt-bW9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="QeA-qx-Eck"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Wfe-nc-DiQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="304-bT-Dun" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2715" y="2145"/>
+        </scene>
+        <!--+Infos Statistiques-->
+        <scene sceneID="uDR-Gt-RB6">
+            <objects>
+                <viewController title="+Infos Statistiques" id="ao8-Jo-nfp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="66v-En-tPD">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="j9c-P6-7Zc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xad-Fs-jac"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kez-4O-8Ew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711" y="2144"/>
         </scene>
         <!--Parametres-->
         <scene sceneID="dub-j5-mcl">
@@ -169,11 +365,28 @@
                         <outlet property="UtilisateurPicker" destination="RUd-Tj-F3y" id="ndb-UY-3BT"/>
                         <outlet property="boutonSuprimer" destination="pGn-d7-gpL" id="1Vz-gu-N9Y"/>
                         <outlet property="modeSombre" destination="xOH-h9-drb" id="KDN-Bc-wSI"/>
+                        <segue destination="4uy-dh-VsI" kind="show" id="3Eq-TA-37r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcD-jy-bTm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1794.6564885496182" y="1229.5774647887324"/>
+        </scene>
+        <!--+Infos Paramètres-->
+        <scene sceneID="eej-wA-3l3">
+            <objects>
+                <viewController title="+Infos Paramètres" id="4uy-dh-VsI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PKr-ej-L4j">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="FzW-Od-WA9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aFg-Px-9MN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2a-aa-JGR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1795" y="2144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sDo-aZ-XpD">
@@ -185,7 +398,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Kcu-hY-UUR" kind="relationship" relationship="viewControllers" id="DG4-rh-00Z"/>
+                        <segue destination="BPP-RE-cmR" kind="relationship" relationship="viewControllers" id="Zih-j7-qLH"/>
                         <segue destination="gU3-1D-SDo" kind="relationship" relationship="viewControllers" id="XTG-EI-cqo"/>
                         <segue destination="p2T-64-MqM" kind="relationship" relationship="viewControllers" id="L56-zZ-jQw"/>
                         <segue destination="kp6-o1-nR6" kind="relationship" relationship="viewControllers" id="egw-Zi-0eB"/>

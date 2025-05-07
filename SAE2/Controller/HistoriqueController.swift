@@ -13,7 +13,6 @@ class HistoriqueController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AppDelegate.creerJeuDEssaiFlux()
 
         // Do any additional setup after loading the view.
         let controller = UIHostingController(rootView: Historique())

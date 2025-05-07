@@ -10,9 +10,9 @@ class Flux : Codable, Identifiable{
     
     // seulement si il est récurent
     public var frequenceFlux : Int // = 0 si non récurent
-    public var dureeFlux : Int
+    public var dureeFlux : Int = 0
     
-    public init(nomFlux: String, montantFlux: Float, typeFlux: String, dateFlux: Date, groupesFlux: [Groupe], frequenceFlux: Int, dureeFlux: Int) {
+    public init( nomFlux: String, montantFlux: Float, typeFlux: String, dateFlux: Date, groupesFlux: [Groupe], frequenceFlux: Int, dureeFlux: Int) {
         self.nomFlux = nomFlux
         self.montantFlux = montantFlux
         self.typeFlux = typeFlux
@@ -53,6 +53,15 @@ class Flux : Codable, Identifiable{
     // renvoi toutes les données de l'instance dans un String formaté
     public func enChaine() -> String{
         var chaine : String
+        if typeFlux == "entree"{
+            typeFlux = "Entrée"
+        }
+        else if typeFlux == "sortie"{
+            typeFlux = "Sortie"
+        }
+        else{
+            
+        }
         if ( frequenceFlux == 0 ){
             chaine = "\(nomFlux) ( \(typeFlux) ) : \(montantFlux) [\(dateFlux.formatted())] groupes : "
         }else{
