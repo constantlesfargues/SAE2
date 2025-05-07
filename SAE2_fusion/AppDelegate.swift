@@ -10,15 +10,8 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    /*public static var stats: [Stat] = [
-        Stat(id:0,"une tourte lol","pieMontant",nil,nil,nil,nil,"pie",nil),
-        Stat(id:1,"une tourte petite","pieGroupe",nil,nil,nil,nil,"pie",nil),
-        Stat(id:2,"une ligne de rats","line",nil,nil,nil,nil,"graph",nil),
-        Stat(id:3,"une ligne de rats coupé","line",nil,nil,Date(timeIntervalSinceReferenceDate: 60*60*24*101),Date(timeIntervalSinceReferenceDate: 60*60*24*102),"graph",nil),
-        Stat(id:4,"une grande surface","area",nil,nil,nil,nil,"graph",nil)
-    ]*/
     
+    // debut alex
     public static var stats: [Stat] = []
     
     public static func getTags()->[String] {
@@ -44,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     public static var statIndex:Int = 0
+    // fin alex
     
     // Les Utilisateurs
     // le premier ( AppDelegate.users[0] ) est celui actuelement utilisé
@@ -54,7 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Données de l'utilisateur actuel
     public static var fluxs : [Flux] = []
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // récupere les Utilisateurs dans le JSON
@@ -67,6 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // récupere les données (Fluxs, Parametres) de l'utilisateur actuel
         AppDelegate.updateDonneesUser()
+        
+        SceneDelegate.actualiserModeCouleur()
         
         return true
     }
@@ -89,6 +86,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             Flux.ecrireFlux(AppDelegate.users[0], AppDelegate.fluxs)
         }
+    }
+    
+    // écrit les données actuelles sur le JSON
+    public static func actualiserJSON(){
+        Flux.ecrireFlux(AppDelegate.users[0], fluxs)
+        Parametres.ecrireParam(AppDelegate.users[0], param)
+        // rajouter les stat
     }
     
     public static func changeUtilisateur(_ indiceUtilisateur : Int){
