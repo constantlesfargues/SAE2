@@ -20,8 +20,17 @@ class StatHostingController: UIHostingController<StatUIView> {
     }
 }
 
+func getStat()->Stat {
+    for stat in AppDelegate.stats {
+        if stat.id == AppDelegate.statIndex {
+            return stat
+        }
+    }
+    return AppDelegate.stats[0]
+}
+
 struct StatUIView: View {
     var body:some View{
-        AppDelegate.stats[AppDelegate.statIndex].getChart(flux: AppDelegate.fluxs)
+        getStat().getChart(flux: AppDelegate.fluxs)
     }
 }

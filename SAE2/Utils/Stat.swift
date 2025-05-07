@@ -18,13 +18,16 @@ class Stat:Codable {
     public var dateMin:Date?
     public var dateMax:Date?
     public var tag:String?
+    public var recurrent:Bool?
     public init(id:Int,_ name:String
          ,_ type:String
          ,_ groupes:[Groupe]?
          ,_ typeFlux:String?
          ,_ dateMin:Date?
          ,_ dateMax:Date?
-         ,_ tag:String?){
+         ,_ tag:String?
+         ,_ recurrent:Bool?
+    ){
         self.id = id
         self.name = name
         self.type = type
@@ -33,6 +36,7 @@ class Stat:Codable {
         self.dateMin = dateMin
         self.dateMax = dateMax
         self.tag = tag
+        self.recurrent = recurrent
     }
     
     @ViewBuilder private func mkPie(data:[(nom:String,montant:Float)])-> some View {
@@ -66,14 +70,29 @@ class Stat:Codable {
         }
     }
     
+    @ViewBuilder private func mkBar(data:[(date:Date,montant:Float)])-> some View {
+        Chart(data, id: \.date) { d in
+            BarMark(
+                x:.value("temps", d.date),
+                y:.value("montant",d.montant)
+            )
+        }
+    }
+    
     @ViewBuilder private func mkEmpty()->some View {
         Text("une statistique")
     }
     
     public func checkFlux(_ flux:Flux)->Bool {
         var ok = true
+        if let recurrent {
+            if flux.frequenceFlux == 0 && recurrent || flux.frequenceFlux > 0 && !recurrent{
+                ok = false
+            }
+        }
+        if !ok {return false}
         if let groupes {
-            for i in 0..<groupes.count {
+            for i in 0..<min(flux.groupesFlux.count,groupes.count) {
                 if groupes[i].nomGroupe != flux.groupesFlux[i].nomGroupe {
                     ok = false
                     break
@@ -133,42 +152,84 @@ class Stat:Codable {
             return AnyView(mkPie(data: dataFormat))
         }else if type == "line" {
             var data:[(date:Date,montant:Float)] = []
+            var montant:Float = 0
             for flux in AppDelegate.fluxs {
                 if checkFlux(flux) {
-                    data.append((date:flux.dateFlux,montant:flux.montantFlux))
+                    montant += flux.montantFlux
+                    data.append((date:flux.dateFlux,montant:montant))
                 }
             }
             return AnyView(mkLine(data:data))
         }else if type == "area" {
-            var groupes:[String:Bool] = ["autre":true]
+            var groupesSet:Set<String> = Set()
+            groupesSet.insert("autre")
             for flux in AppDelegate.fluxs {
                 for groupe in flux.groupesFlux {
-                    if groupes[groupe.nomGroupe] == nil {
-                        groupes[groupe.nomGroupe] = true
-                    }
+                    groupesSet.insert(groupe.nomGroupe)
                 }
             }
+            let groupes = groupesSet.sorted()
+            //print(groupes,"\n")
             var data:[(date:Date,montant:Float,groupe:String)] = []
             for flux in AppDelegate.fluxs {
                 if checkFlux(flux) {
-                        for (subGroupe,_) in groupes {
+                        for subGroupe in groupes {
                             var montant:Float = 0
                             if subGroupe == "autre" && flux.groupesFlux.isEmpty {
-                                montant = flux.montantFlux
+                                montant += flux.montantFlux
                             }else {
                                 for groupe in flux.groupesFlux {
                                     if groupe.nomGroupe == subGroupe {
-                                        montant = flux.montantFlux/Float(flux.groupesFlux.count)
+                                        montant += flux.montantFlux/Float(flux.groupesFlux.count)
                                         break
                                     }
                                 }
                             }
+                            if montant < 0 {
+                                data.append((date:flux.dateFlux,montant:0,groupe:subGroupe))
+                            }
                             data.append((date:flux.dateFlux,montant:montant,groupe:subGroupe))
                         }
+                    /*
+                    if let negative {
+                        for i in data.count-groupes.count..<data.count {
+                            data[i].montant = negative/Float(groupes.count)
+                        }
+                    }
+                     */
                     
                 }
             }
+            var isSorted = false
+            //print(data,"\n")
+            while !isSorted {
+                isSorted = true
+                for i in 0..<data.count-1 {
+                    if data[i].date > data[i+1].date {
+                        isSorted = false
+                        let temp = data[i]
+                        data[i] = data[i+1]
+                        data[i+1] = temp
+                    }
+                }
+            }
+            
+            //print(data)
+            /*
+            if data.count > 1 {
+                for i in 1..<data.count {
+                    data[i].montant += data[i-1].montant
+                }
+            }*/
             return AnyView(mkArea(data: data))
+        }else if type == "bar" {
+            var data:[(date:Date,montant:Float)] = []
+            for flux in AppDelegate.fluxs {
+                if checkFlux(flux) {
+                    data.append((flux.dateFlux,flux.montantFlux))
+                }
+            }
+            return AnyView(mkBar(data:data))
         }
         return AnyView(mkEmpty())
     }

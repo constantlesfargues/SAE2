@@ -11,13 +11,15 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    public static var stats: [Stat] = [
-        Stat(id:0,"une tourte lol","pieMontant",nil,nil,nil,nil,"pie"),
-        Stat(id:1,"une tourte petite","pieGroupe",nil,nil,nil,nil,"pie"),
-        Stat(id:2,"une ligne de rats","line",nil,nil,nil,nil,"graph"),
-        Stat(id:3,"une ligne de rats coupé","line",nil,nil,Date(timeIntervalSinceReferenceDate: 60*60*24*101),Date(timeIntervalSinceReferenceDate: 60*60*24*102),"graph"),
-        Stat(id:4,"une grande surface","area",nil,nil,nil,nil,"graph")
-    ]
+    /*public static var stats: [Stat] = [
+        Stat(id:0,"une tourte lol","pieMontant",nil,nil,nil,nil,"pie",nil),
+        Stat(id:1,"une tourte petite","pieGroupe",nil,nil,nil,nil,"pie",nil),
+        Stat(id:2,"une ligne de rats","line",nil,nil,nil,nil,"graph",nil),
+        Stat(id:3,"une ligne de rats coupé","line",nil,nil,Date(timeIntervalSinceReferenceDate: 60*60*24*101),Date(timeIntervalSinceReferenceDate: 60*60*24*102),"graph",nil),
+        Stat(id:4,"une grande surface","area",nil,nil,nil,nil,"graph",nil)
+    ]*/
+    
+    public static var stats: [Stat] = []
     
     public static func getTags()->[String] {
         var tags : Set<String> = []
@@ -29,6 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var tagsArr = Array(tags)
         tagsArr.insert("tous",at:0)
         return tagsArr
+    }
+    
+    public static func removeStat(id:Int) {
+        var i:Int = 0
+        for stat in stats {
+            if id == stat.id {
+                stats.remove(at:i)
+            }
+            i+=1
+        }
     }
     
     public static var statIndex:Int = 0
