@@ -200,11 +200,11 @@
             </objects>
             <point key="canvasLocation" x="-1259" y="2057"/>
         </scene>
-        <!--Item-->
+        <!--Flux-->
         <scene sceneID="bCt-Cq-Z3k">
             <objects>
                 <navigationController id="BPP-RE-cmR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="sgO-P5-6kk"/>
+                    <tabBarItem key="tabBarItem" title="Flux" image="eurosign" catalog="system" id="sgO-P5-6kk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z2e-kR-mJi">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -232,6 +232,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWu-cr-lnt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-73" y="1230"/>
+        </scene>
+        <!--Statistiques-->
+        <scene sceneID="tKs-eO-0a8">
+            <objects>
+                <navigationController id="X93-x3-7aM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Statistiques" id="2E4-uv-TQy"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hpn-IH-qmv">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="diW-6c-sgp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="862" y="1230"/>
         </scene>
         <!--+Infos Flux/Historique-->
         <scene sceneID="NV7-7Q-EYk">
@@ -400,53 +414,16 @@
                     <connections>
                         <segue destination="BPP-RE-cmR" kind="relationship" relationship="viewControllers" id="Zih-j7-qLH"/>
                         <segue destination="gU3-1D-SDo" kind="relationship" relationship="viewControllers" id="XTG-EI-cqo"/>
-                        <segue destination="p2T-64-MqM" kind="relationship" relationship="viewControllers" id="L56-zZ-jQw"/>
                         <segue destination="kp6-o1-nR6" kind="relationship" relationship="viewControllers" id="egw-Zi-0eB"/>
+                        <segue destination="X93-x3-7aM" kind="relationship" relationship="viewControllers" id="uYx-ri-Ym4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmz-0z-R0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="250" y="353"/>
         </scene>
-        <!--Stat-->
-        <scene sceneID="dUh-Wp-ogP">
-            <objects>
-                <tableViewController title="Stat" id="p2T-64-MqM" customClass="StatsViewController" customModule="SAE2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="GFa-Mq-ZEQ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="Goy-7w-KkG">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Statistiques" id="rtr-wg-m7Y"/>
-                            </items>
-                        </navigationBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SaQ-Ue-QkD">
-                                <rect key="frame" x="0.0" y="94" width="393" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SaQ-Ue-QkD" id="ytx-qj-lQJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="p2T-64-MqM" id="dWI-xj-YKf"/>
-                            <outlet property="delegate" destination="p2T-64-MqM" id="xZB-wO-c4J"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Stat" image="chart.pie.fill" catalog="system" id="Rh5-43-ihz"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tAu-ie-ZP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="711" y="1230"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="chart.pie.fill" catalog="system" width="128" height="123"/>
         <image name="clock.arrow.trianglehead.counterclockwise.rotate.90" catalog="system" width="128" height="119"/>
         <image name="eurosign" catalog="system" width="122" height="128"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
