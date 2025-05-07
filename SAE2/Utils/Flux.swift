@@ -10,7 +10,7 @@ class Flux : Codable{
     
     // seulement si il est récurent
     public var frequenceFlux : Int // = 0 si non récurent
-    public var dureeFlux : Int
+    public var dureeFlux : Int?
     
     public init(nomFlux : String
                 ,montantFlux : Float

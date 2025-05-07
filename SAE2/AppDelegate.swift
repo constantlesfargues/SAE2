@@ -54,7 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Données de l'utilisateur actuel
     public static var fluxs : [Flux] = []
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // récupere les Utilisateurs dans le JSON
@@ -67,6 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // récupere les données (Fluxs, Parametres) de l'utilisateur actuel
         AppDelegate.updateDonneesUser()
+        
+        SceneDelegate.actualiserModeCouleur()
         
         return true
     }
@@ -89,6 +92,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             Flux.ecrireFlux(AppDelegate.users[0], AppDelegate.fluxs)
         }
+    }
+    
+    // écrit les données actuelles sur le JSON
+    public static func actualiserJSON(){
+        Flux.ecrireFlux(AppDelegate.users[0], fluxs)
+        Parametres.ecrireParam(AppDelegate.users[0], param)
+        // rajouter les stat
     }
     
     public static func changeUtilisateur(_ indiceUtilisateur : Int){

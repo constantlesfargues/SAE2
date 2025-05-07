@@ -11,12 +11,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
+    public static var actualiserModeCouleur:()->() = {}
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+               
+            actualiserModeCouleurInterne()
+            SceneDelegate.actualiserModeCouleur = {
+                self.actualiserModeCouleurInterne()
+            }
+
+            self.window = window
+            window.makeKeyAndVisible()
+        }
+        
         guard let _ = (scene as? UIWindowScene) else { return }
+    }
+    
+    func actualiserModeCouleurInterne(){
+        let modeCouleur = AppDelegate.param.modeSombre!
+        window!.overrideUserInterfaceStyle = modeCouleur ? .dark : .light // ou .dark pour forcer le mode sombre
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
