@@ -9,13 +9,15 @@ import UIKit
 import SwiftUI
 
 class HistoriqueController: UIViewController {
+    
+    let fluxStore = FluxStore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
         // Do any additional setup after loading the view.
-        let controller = UIHostingController(rootView: Historique())
+        let controller = UIHostingController(rootView: Historique(store: fluxStore))
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         self.addChild(controller)
         self.view.addSubview(controller.view)

@@ -8,29 +8,38 @@
 import SwiftUI
 
 struct Historique: View {
-    
-    @State var isShowingNewScreen = false
-    
+    @ObservedObject var store: FluxStore
+    @State private var isShowingNewScreen = false
+
     var body: some View {
         NavigationStack {
-            List(AppDelegate.fluxs) { flux in
+            List {
                 Section("Votre historique") {
-                    NavigationLink(destination: Text(flux.enChaine())) {
-                        VStack(alignment: .leading) {
-                            Text(flux.nomFlux)
-                                .font(.headline)
-                            Text("\(flux.montantFlux, specifier: "%.2f") € - \(flux.typeFlux)")
-                                .font(.subheadline)
+                    ForEach(store.fluxs) { flux in
+                        NavigationLink(destination: Text(flux.enChaine())) {
+                            VStack(alignment: .leading) {
+                                Text(flux.nomFlux)
+                                    .font(.headline)
+                                Text("\(flux.montantFlux, specifier: "%.2f") € - \(flux.typeFlux)")
+                                    .font(.subheadline)
+                            }
                         }
                     }
+                    .onDelete(perform: store.supprimerFlux) // 🔥 swipe-to-delete
                 }
-                Section("Test1") {
-                    Text("Test")
-                }
+            }
+            .refreshable {
+                store.rechargerDepuisJSON()
+            }
+            .onAppear {
+                store.rechargerDepuisJSON()
             }
             .navigationTitle("Historique")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
+                    EditButton()
+                }
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         isShowingNewScreen = true
                     } label: {
@@ -46,5 +55,5 @@ struct Historique: View {
 }
 
 #Preview {
-    Historique()
+    Historique(store: FluxStore())
 }
