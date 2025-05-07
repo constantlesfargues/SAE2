@@ -114,6 +114,36 @@
             </objects>
             <point key="canvasLocation" x="1794.6564885496182" y="1229.5774647887324"/>
         </scene>
+        <!--Flux-->
+        <scene sceneID="IX1-4h-RYs">
+            <objects>
+                <navigationController id="vSl-RH-2rZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Flux" image="eurosign" catalog="system" id="Fgw-0U-7sO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6OL-AR-BZy">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nvV-gN-O1X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1483" y="1230"/>
+        </scene>
+        <!--Historique-->
+        <scene sceneID="lOc-ea-tKU">
+            <objects>
+                <viewController id="Rgj-MH-KOC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rma-dg-f7N">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="4t4-WP-agp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Historique" id="Mwr-3Y-hav"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wR6-EF-pUn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-343" y="1230"/>
+        </scene>
         <!--Statistiques-->
         <scene sceneID="02a-Xy-Cpt">
             <objects>
@@ -141,6 +171,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="vSl-RH-2rZ" kind="relationship" relationship="viewControllers" id="X1Q-lU-T8u"/>
+                        <segue destination="Rgj-MH-KOC" kind="relationship" relationship="viewControllers" id="Xz9-zo-kwu"/>
                         <segue destination="AGm-Zc-Vzx" kind="relationship" relationship="viewControllers" id="WnC-D5-qS3"/>
                         <segue destination="kp6-o1-nR6" kind="relationship" relationship="viewControllers" id="egw-Zi-0eB"/>
                     </connections>
@@ -438,6 +470,7 @@
     <resources>
         <image name="arrow.clockwise" catalog="system" width="110" height="128"/>
         <image name="chart.pie.fill" catalog="system" width="128" height="123"/>
+        <image name="eurosign" catalog="system" width="122" height="128"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="questionmark" catalog="system" width="94" height="128"/>
