@@ -53,6 +53,15 @@ class Flux : Codable, Identifiable{
     // renvoi toutes les données de l'instance dans un String formaté
     public func enChaine() -> String{
         var chaine : String
+        if typeFlux == "entree"{
+            typeFlux = "Entrée"
+        }
+        else if typeFlux == "sortie"{
+            typeFlux = "Sortie"
+        }
+        else{
+            
+        }
         if ( frequenceFlux == 0 ){
             chaine = "\(nomFlux) ( \(typeFlux) ) : \(montantFlux) [\(dateFlux.formatted())] groupes : "
         }else{
