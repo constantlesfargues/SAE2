@@ -14,29 +14,34 @@ struct Historique: View {
     var body: some View {
         NavigationStack {
             List(AppDelegate.fluxs) { flux in
-                        NavigationLink(destination: Text(flux.enChaine())) {
-                            VStack(alignment: .leading) {
-                                Text(flux.nomFlux)
-                                    .font(.headline)
-                                Text("\(flux.montantFlux, specifier: "%.2f") € - \(flux.typeFlux)")
-                                    .font(.subheadline)
-                            }
+                Section("Votre historique") {
+                    NavigationLink(destination: Text(flux.enChaine())) {
+                        VStack(alignment: .leading) {
+                            Text(flux.nomFlux)
+                                .font(.headline)
+                            Text("\(flux.montantFlux, specifier: "%.2f") € - \(flux.typeFlux)")
+                                .font(.subheadline)
                         }
                     }
-                    .navigationTitle("Mes Flux")
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) { // ⬅️ Item placé à gauche
-                            Button {
-                                        isShowingNewScreen = true
-                                    } label: {
-                                        Text("Filtres")
-                                    }
-                                    .sheet(isPresented: $isShowingNewScreen) {
-                                        Text("Filtres") // ⬅️ Contenu du nouvel écran
-                                    }
-                                    }
+                }
+                Section("Test1") {
+                    Text("Test")
+                }
+            }
+            .navigationTitle("Historique")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        isShowingNewScreen = true
+                    } label: {
+                        Text("Filtrer la sélection")
+                    }
+                    .sheet(isPresented: $isShowingNewScreen) {
+                        Filtres()
                     }
                 }
+            }
+        }
     }
 }
 
