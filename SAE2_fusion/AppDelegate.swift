@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // récupere les Fluxs dans le JSON de l'utilisateur
         // crée le fichier avec aucuns Fluxs si il n'existe pas
         let fluxsLu = Flux.lireFlux(AppDelegate.users[0])
-        if ( parametresLu != nil ){
+        if ( fluxsLu != nil ){
             AppDelegate.fluxs = fluxsLu!
         }else{
             Flux.ecrireFlux(AppDelegate.users[0], AppDelegate.fluxs)

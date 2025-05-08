@@ -15,6 +15,7 @@ class HistoriqueController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SceneDelegate.actualiserModeCouleur() // a metre dans chaque viewDidLoad au cas ou
 
         // Do any additional setup after loading the view.
         let controller = UIHostingController(rootView: Historique(store: fluxStore))

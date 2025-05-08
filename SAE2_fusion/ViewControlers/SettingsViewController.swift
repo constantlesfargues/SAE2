@@ -58,8 +58,9 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             if ( Utilisateur.nomPossible(AppDelegate.users, inputName) ){
                 AppDelegate.users.append(Utilisateur(inputName!))
                 Utilisateur.ecrireUtilisateur(AppDelegate.users)
+                Parametres.ecrireParam(AppDelegate.users.last!, Parametres() )
             }else{
-                // affiche erreur
+                print("ERREUR : le nom d'utilisateur est deja utilisé")
             }
             self.UtilisateurPicker.reloadAllComponents()// actualise l'affichage des Utilisateurs
             
@@ -90,6 +91,10 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             Utilisateur.ecrireUtilisateur(AppDelegate.users)// actualise le JSON avec les utilisateurs actuels
             
             self.UtilisateurPicker.reloadAllComponents()// actualise l'affichage des Utilisateurs
+            
+            AppDelegate.changeUtilisateur(0)
+            SceneDelegate.actualiserModeCouleur()
+            self.resetInputParam()
             
             // Empeche la supréssion d'Utilisateur si il n'y en a qu'un
             if (AppDelegate.users.count <= 1){
