@@ -28,29 +28,39 @@ class AjouterFluxViewController: UIViewController {
     }
     
     @IBAction func tapSurAjouter(_ sender: Any) {
-        var leType : String
-        var leNom : String
-        var laDate : Date
-        var leMontant : Float
-        var lesGroupes : [Groupe] = [Groupe("Restaurant")]
-        var laFreq : Int = 0
-        var laDuree : Int = 0
         
+        var laDuree : Int = 0
+        var lesGroupes : [Groupe] = [Groupe("Restaurant")]
+        
+        var leType : String
         if typeFluxSC.selectedSegmentIndex == 0{
             leType = "entree"
         }else{
             leType = "sortie"
         }
+        
+        var leNom : String
         leNom = nomFluxTF.text!
+        
+        var laDate : Date
+        laDate = dateFluxDP.date
+        
+        if (montantFluxTF.text == ""){
+            validationLB.text = "Veuillez rentrer un montant pour le flux."
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.validationLB.text = ""
+            }
+        }
+        var leMontant : Float
         if let montant = Float(montantFluxTF.text!) {
             leMontant = montant
         }else {
             return
         }
         leMontant = abs(Float(montantFluxTF.text!)!)
-        laDate = dateFluxDP.date
-        let laFreqRecup : Int =
-        laFrequenceSC.selectedSegmentIndex
+        
+        var laFreq : Int = 0
+        let laFreqRecup : Int = laFrequenceSC.selectedSegmentIndex
         if estRecurrSC.selectedSegmentIndex == 1{
             if laFreqRecup == 0{
                 laFreq = 1
@@ -68,11 +78,28 @@ class AjouterFluxViewController: UIViewController {
         else{
         }
         
-        var leNouveauFlux : Flux
-        leNouveauFlux = Flux(nomFlux : leNom, montantFlux : leMontant, typeFlux: leType, dateFlux: laDate, groupesFlux : lesGroupes, frequenceFlux : laFreq, dureeFlux : laDuree)
-        AppDelegate.fluxs.append(leNouveauFlux)
-        AppDelegate.actualiserJSON()
-        validationLB.text="Le flux a bien été ajouté!"
+        if (nomFluxTF.text == ""){
+            validationLB.text = "Veuillez rentrer un nom pour le flux."
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.validationLB.text = ""
+            }
+        }
+        else{
+            var leNouveauFlux : Flux
+            leNouveauFlux = Flux(nomFlux : leNom, montantFlux : leMontant, typeFlux: leType, dateFlux: laDate, groupesFlux : lesGroupes, frequenceFlux : laFreq, dureeFlux : laDuree)
+            AppDelegate.fluxs.append(leNouveauFlux)
+            AppDelegate.actualiserJSON()
+            typeFluxSC.selectedSegmentIndex = 0
+            nomFluxTF.text! = ""
+            dateFluxDP.date = Date()
+            montantFluxTF.text! = ""
+            laFrequenceSC.selectedSegmentIndex = 0
+            estRecurrSC.selectedSegmentIndex = 0
+            validationLB.text = "Le flux a bien été ajouté!"
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.validationLB.text = ""
+            }
+        }
     }
     
     @IBAction func tapSurRetour(_ sender: Any) {
@@ -80,6 +107,7 @@ class AjouterFluxViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         // Do any additional setup after loading the view.
     }
