@@ -7,8 +7,17 @@
 
 import UIKit
 
-class AjouterFluxViewController: UIViewController {
-    
+class groupeCellFlux : UITableViewCell{
+    @IBAction func tapBtnRemove(_ sender: Any) {
+        onRemove()
+    }
+    @IBOutlet weak var nomGroupeLB: UILabel!
+    public var onRemove:()->() = {}
+}
+
+
+class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+
     
     @IBOutlet weak var typeFluxSC: UISegmentedControl!
     @IBOutlet weak var nomFluxTF: UITextField!
@@ -17,6 +26,69 @@ class AjouterFluxViewController: UIViewController {
     @IBOutlet weak var laFrequenceSC: UISegmentedControl!
     @IBOutlet weak var estRecurrSC: UISegmentedControl!
     @IBOutlet weak var validationLB: UILabel!
+    @IBOutlet weak var nomGroupeTF: UITextField!
+    
+    @IBOutlet weak var laTableView: UITableView!
+    
+    public var lesGroupes:[Groupe] = []
+
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        lesGroupes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupeCellFlux", for: indexPath) as! groupeCellFlux
+        cell.nomGroupeLB.text = lesGroupes[indexPath.row].nomGroupe
+        cell.onRemove = {
+            self.lesGroupes.remove(at: indexPath.row)
+            self.laTableView.reloadData()
+        }
+        return cell
+    }
+
+    
+    
+    @IBAction func tapAjouterGroupe(_ sender: Any) {
+        if nomGroupeTF.text! != "" {
+            lesGroupes.append(Groupe(nomGroupeTF.text!))
+            self.laTableView.reloadData()
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     @IBAction func tapSurAnnuler(_ sender: Any) {
         nomFluxTF.text = ""
@@ -102,11 +174,9 @@ class AjouterFluxViewController: UIViewController {
         }
     }
     
-    @IBAction func tapSurRetour(_ sender: Any) {
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         validationLB.text = ""
         
         
