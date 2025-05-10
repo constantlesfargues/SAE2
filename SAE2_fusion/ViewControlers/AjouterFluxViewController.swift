@@ -29,7 +29,7 @@ class AjouterFluxViewController: UIViewController {
     
     @IBAction func tapSurAjouter(_ sender: Any) {
         
-        var laDuree : Int = 0
+        var laDuree : Int = 730
         var lesGroupes : [Groupe] = [Groupe("Restaurant")]
         
         var leType : String
@@ -107,6 +107,7 @@ class AjouterFluxViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        validationLB.text = ""
         
         
         // Do any additional setup after loading the view.

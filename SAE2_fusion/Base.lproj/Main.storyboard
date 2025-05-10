@@ -557,6 +557,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ycj-b6-Mir">
+                                <rect key="frame" x="-3" y="58" width="393" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Ajout d'un flux" id="297-Uj-VS1"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EEw-Yz-LEt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
