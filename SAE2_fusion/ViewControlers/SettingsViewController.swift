@@ -54,6 +54,8 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             // récupere le nom entré dans la pop up
             let inputName = self.alertAjout.textFields![0].text
             
+            self.alertAjout.textFields?.first?.text = ""
+            
             // Si un nom est bien entré
             if ( Utilisateur.nomPossible(AppDelegate.users, inputName) ){
                 AppDelegate.users.append(Utilisateur(inputName!))
