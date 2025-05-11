@@ -7,15 +7,6 @@
 
 import UIKit
 
-class groupeCellFlux : UITableViewCell{
-    @IBAction func tapBtnRemove(_ sender: Any) {
-        onRemove()
-    }
-    @IBOutlet weak var nomGroupeLB: UILabel!
-    public var onRemove:()->() = {}
-}
-
-
 class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     
@@ -42,7 +33,7 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupeCellFlux", for: indexPath) as! groupeCellFlux
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupeCellFlux", for: indexPath) as! groupeCell
         cell.nomGroupeLB.text = lesGroupes[indexPath.row].nomGroupe
         cell.onRemove = {
             self.lesGroupes.remove(at: indexPath.row)
@@ -59,37 +50,7 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
             self.laTableView.reloadData()
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     @IBAction func tapSurAnnuler(_ sender: Any) {
         nomFluxTF.text = ""
         montantFluxTF.text = ""
@@ -179,7 +140,8 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
 
         validationLB.text = ""
         
-        
+        self.laTableView.delegate = self
+        self.laTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     

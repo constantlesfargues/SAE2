@@ -86,12 +86,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             Flux.ecrireFlux(AppDelegate.users[0], AppDelegate.fluxs)
         }
+        let statsLu = Stat.lireFlux(AppDelegate.users[0])
+        if ( statsLu != nil ){
+            AppDelegate.stats = statsLu!
+        }else{
+            Stat.ecrireStats(AppDelegate.users[0], AppDelegate.stats)
+        }
     }
     
     // écrit les données actuelles sur le JSON
     public static func actualiserJSON(){
         Flux.ecrireFlux(AppDelegate.users[0], fluxs)
         Parametres.ecrireParam(AppDelegate.users[0], param)
+        Stat.ecrireStats(AppDelegate.users[0], stats)
         // rajouter les stat
     }
     

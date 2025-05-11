@@ -29,11 +29,10 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
     }
     
     public var lesTypes:[String] = [
-        "diagramme circulaire flux",
-        "diagramme circulaire groupes",
         "graphique linéaire flux",
-        "graphique en aires groupes",
-        "diagramme en bars"
+        "diagramme circulaire groupes",
+        "diagramme en bars",
+        "diagramme circulaire flux"
     ]
     
     @IBOutlet weak var nomTF: UITextField!
@@ -43,9 +42,7 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
     @IBOutlet weak var typeStatPV: UIPickerView!
     
     @IBOutlet weak var dateMinDP: UIDatePicker!
-    @IBOutlet weak var dateMinSwitch: UISwitch!
-    
-    @IBOutlet weak var dateMaxSwitch: UISwitch!
+
     @IBOutlet weak var dateMaxDP: UIDatePicker!
     
     @IBOutlet weak var typeFluxSC: UISegmentedControl!
@@ -102,11 +99,10 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
         }
         
         let lesTypes:[String] = [
-            "pieMontant",
-            "pieGroupe",
             "line",
-            "area",
-            "bar"
+            "pieGroupe",
+            "bar",
+            "pieMontant"
         ]
         
         let lesTypesFlux:[String?] = [
@@ -126,12 +122,14 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
                      lesTypes[typeStatPV.selectedRow(inComponent: 0)],
                      lesGroupes,
                      lesTypesFlux[typeFluxSC.selectedSegmentIndex],
-                     dateMinSwitch.isOn ? dateMinDP.date : nil,
-                     dateMaxSwitch.isOn ? dateMaxDP.date : nil,
+                     dateMinDP.date,
+                     dateMaxDP.date,
                      tagTF.text! != "" ? tagTF.text!:nil,
                      tableRecurrence[recurrentSC.selectedSegmentIndex]
                     )
             )
+            
+            AppDelegate.actualiserJSON()
             
             nomTF.text = ""
             tagTF.text = ""
