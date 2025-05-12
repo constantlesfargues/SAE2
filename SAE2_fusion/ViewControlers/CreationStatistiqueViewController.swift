@@ -69,6 +69,7 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
         laTableView.delegate = self
         // Do any additional setup after loading the view.
         if let laStat {
+            print(laStat.name)
             let lesTypes:[String:Int] = [
                 "line":0,
                 "pieGroupe":1,
@@ -78,7 +79,7 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
             typeStatPV.selectRow(lesTypes[laStat.type]!, inComponent: 0, animated: false)
             if laStat.typeFlux != nil {
                 let lesTypesFlux:[String:Int] = [
-                    "entrée":1,
+                    "entree":1,
                     "sortie":2
                 ]
                 typeFluxSC.selectedSegmentIndex = lesTypesFlux[laStat.typeFlux!]!
@@ -173,6 +174,10 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
             
             nomTF.text = ""
             tagTF.text = ""
+            lesGroupes = []
+            laTableView.reloadData()
+            typeFluxSC.selectedSegmentIndex = 0
+            recurrentSC.selectedSegmentIndex = 0
             
         }
     }

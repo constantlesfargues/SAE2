@@ -83,6 +83,10 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
     
     @IBOutlet weak var tagPV: UIPickerView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.updateStats()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

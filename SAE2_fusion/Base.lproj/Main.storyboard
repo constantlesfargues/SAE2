@@ -339,10 +339,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ktu-4K-f6O">
-                                <rect key="frame" x="164" y="734" width="64" height="35"/>
+                                <rect key="frame" x="150" y="734" width="94" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="créer"/>
+                                <buttonConfiguration key="configuration" style="gray" title="effectuer"/>
                                 <connections>
                                     <action selector="tapCreerStat:" destination="XKb-vz-gsg" eventType="touchUpInside" id="zoE-Mq-oQa"/>
                                 </connections>
@@ -436,10 +436,10 @@
         <!--Stat Hosting Controller-->
         <scene sceneID="82x-SJ-oWx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mPt-Ey-v2q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <hostingController id="nPy-G3-ve2" customClass="StatHostingController" customModule="SAE2_fusion" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="wbb-oV-kz9"/>
                 </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mPt-Ey-v2q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1115" y="2720"/>
         </scene>
