@@ -187,6 +187,15 @@
                                                 <action selector="tapRemove:" destination="www-dS-gls" eventType="touchUpInside" id="y6O-md-aPu"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ka2-Uf-t4s">
+                                            <rect key="frame" x="314" y="21" width="40" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="gray" image="gearshape.fill" catalog="system" title=""/>
+                                            <connections>
+                                                <action selector="tapModif:" destination="www-dS-gls" eventType="touchUpInside" id="axx-As-MuW"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.90000000000000002" height="1"/>
@@ -236,18 +245,20 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="+"/>
                                 <connections>
-                                    <segue destination="XKb-vz-gsg" kind="show" id="lUu-g9-Uwe"/>
+                                    <action selector="tapAjouter:" destination="Bcf-LS-qTv" eventType="touchUpInside" id="YHF-7F-nh0"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tagPV" destination="kRl-sN-H5A" id="PF1-Jn-CIM"/>
+                        <segue destination="XKb-vz-gsg" kind="show" identifier="ajoutStat" id="Ybw-0I-MEN"/>
+                        <segue destination="XKb-vz-gsg" kind="show" identifier="modifierStat" id="qhA-ib-S6Z"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egc-4M-l8t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="711" y="1973"/>
+            <point key="canvasLocation" x="710.68702290076328" y="1972.5352112676057"/>
         </scene>
         <!--Creation Statistique View Controller-->
         <scene sceneID="auD-Eh-kDf">
@@ -425,10 +436,10 @@
         <!--Stat Hosting Controller-->
         <scene sceneID="82x-SJ-oWx">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mPt-Ey-v2q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <hostingController id="nPy-G3-ve2" customClass="StatHostingController" customModule="SAE2_fusion" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="wbb-oV-kz9"/>
                 </hostingController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mPt-Ey-v2q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1115" y="2720"/>
         </scene>
@@ -662,6 +673,9 @@
             <point key="canvasLocation" x="-254" y="1230"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qhA-ib-S6Z"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="110" height="128"/>
         <image name="chart.pie.fill" catalog="system" width="128" height="123"/>

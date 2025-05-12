@@ -16,6 +16,10 @@ class groupeCell:UITableViewCell {
 }
 
 class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource {
+    var modifier:Bool = false
+    var idAModif:Int = 0
+    var laStat:Stat? = nil
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
@@ -64,6 +68,40 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
         laTableView.dataSource = self
         laTableView.delegate = self
         // Do any additional setup after loading the view.
+        if let laStat {
+            let lesTypes:[String:Int] = [
+                "line":0,
+                "pieGroupe":1,
+                "bar":2,
+                "pieMontant":3
+            ]
+            typeStatPV.selectRow(lesTypes[laStat.type]!, inComponent: 0, animated: false)
+            if laStat.typeFlux != nil {
+                let lesTypesFlux:[String:Int] = [
+                    "entrée":1,
+                    "sortie":2
+                ]
+                typeFluxSC.selectedSegmentIndex = lesTypesFlux[laStat.typeFlux!]!
+            }else {
+                typeFluxSC.selectedSegmentIndex = 0
+            }
+            if laStat.recurrent != nil {
+                let lesTypesRec:[Bool:Int] = [
+                    true:1,
+                    false:0
+                ]
+                recurrentSC.selectedSegmentIndex = lesTypesRec[laStat.recurrent!]!
+            }else {
+                recurrentSC.selectedSegmentIndex = 0
+            }
+            dateMaxDP.date = laStat.dateMax!
+            dateMinDP.date = laStat.dateMin!
+            
+            lesGroupes = laStat.groupes!
+            nomTF.text = laStat.name
+            tagTF.text = laStat.tag
+            
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -117,8 +155,7 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
         
         if nomTF.text! != "" {
             
-            AppDelegate.stats.append(
-                Stat(id: id, nomTF.text!,
+            let nvStat = Stat(id: id, nomTF.text!,
                      lesTypes[typeStatPV.selectedRow(inComponent: 0)],
                      lesGroupes,
                      lesTypesFlux[typeFluxSC.selectedSegmentIndex],
@@ -127,8 +164,11 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
                      tagTF.text! != "" ? tagTF.text!:nil,
                      tableRecurrence[recurrentSC.selectedSegmentIndex]
                     )
-            )
-            
+            if modifier {
+                AppDelegate.modifierStat(idAModif, nvStat)
+            }else {
+                AppDelegate.stats.append(nvStat)
+            }
             AppDelegate.actualiserJSON()
             
             nomTF.text = ""

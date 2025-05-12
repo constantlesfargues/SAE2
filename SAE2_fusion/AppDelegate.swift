@@ -36,6 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    public static func modifierStat(_ id:Int,_ stat:Stat) {
+        for i in 0..<stats.count {
+            if id == stats[i].id {
+                stats[i] = stat
+                return
+            }
+        }
+    }
+    
     public static var statIndex:Int = 0
     // fin alex
     

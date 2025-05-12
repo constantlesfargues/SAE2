@@ -9,11 +9,18 @@ import UIKit
 
 class StatsCell: UITableViewCell {
     @IBOutlet weak var statName: UILabel!
+    public var stat:Stat? = nil
     @IBOutlet weak var removeBtn: UIButton!
     public var i:Int = 0
     public var reloadStats:()->() = {}
+    public var segueModif:()->() = {}
+    
     @IBAction func tapRemove(_ sender: Any) {
         self.reloadStats()
+    }
+    
+    @IBAction func tapModif(_ sender: Any) {
+        self.segueModif()
     }
 }
 
@@ -29,6 +36,10 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
     
     @IBAction func tapSearch(_ sender: Any) {
         present(alertAjout, animated: true,completion: nil)
+    }
+    
+    @IBAction func tapAjouter(_ sender: Any) {
+        performSegue(withIdentifier: "ajoutStat",sender:nil)
     }
     
     @IBAction func tapReinit(_ sender: Any) {
@@ -116,13 +127,18 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "statCell", for: indexPath) as! StatsCell
-        cell.statName?.text = stats[indexPath.row].name
-        cell.i = stats[indexPath.row].id
+        let stat = stats[indexPath.row]
+        cell.statName?.text = stat.name
+        cell.i = stat.id
+        cell.stat = stat
         cell.reloadStats = {
             AppDelegate.removeStat(id: cell.i)
             AppDelegate.actualiserJSON()
             self.stats.remove(at: indexPath.row)
             self.tableView.reloadData()
+        }
+        cell.segueModif = {
+            self.performSegue(withIdentifier: "modifierStat", sender: cell)
         }
         return cell
     }
@@ -148,7 +164,14 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
             let cell = sender as! StatsCell
             print(cell.i)
             AppDelegate.statIndex = cell.i
+        }else if segue.identifier == "modifierStat" {
+            let cell = sender as! StatsCell
+            let leController = segue.destination as! CreationStatistiqueViewController
+            leController.modifier = true
+            leController.idAModif = cell.i
+            leController.laStat = cell.stat
         }
+        
     }
 
 }
