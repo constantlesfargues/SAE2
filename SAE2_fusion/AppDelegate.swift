@@ -27,12 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     public static func removeStat(id:Int) {
-        var i:Int = 0
-        for stat in stats {
-            if id == stat.id {
+        for i in 0..<stats.count {
+            if id == stats[i].id {
                 stats.remove(at:i)
+                break
             }
-            i+=1
         }
     }
     
