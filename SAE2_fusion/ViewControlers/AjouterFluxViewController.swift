@@ -132,6 +132,7 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
                 self.validationLB.text = ""
                 self.lesGroupes.removeAll()
                 self.laTableView.reloadData()
+                self.nomGroupeTF.text = ""
             }
         }
     }
