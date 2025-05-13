@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        sleep(1)
         // récupere les Utilisateurs dans le JSON
         let utilisateursLu = Utilisateur.lireUtilisateur()
         if ( utilisateursLu != nil ){

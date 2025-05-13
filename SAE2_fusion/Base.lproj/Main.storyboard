@@ -161,6 +161,7 @@
                     <connections>
                         <segue destination="zYe-yi-qJn" kind="relationship" relationship="viewControllers" id="wUU-mh-wP7"/>
                         <segue destination="zQA-hY-SeO" kind="relationship" relationship="viewControllers" id="l6O-3I-Eus"/>
+                        <segue destination="fit-p4-VGW" kind="relationship" relationship="viewControllers" id="WUs-XX-GYh"/>
                         <segue destination="Awk-Ua-OAw" kind="relationship" relationship="viewControllers" id="pgC-34-wJV"/>
                         <segue destination="tA0-m3-XnB" kind="relationship" relationship="viewControllers" id="4S4-YW-5NJ"/>
                     </connections>
@@ -721,7 +722,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9g-uU-UYz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1196.1832061068701" y="1229.5774647887324"/>
+            <point key="canvasLocation" x="-1758" y="1230"/>
+        </scene>
+        <!--Assistant-->
+        <scene sceneID="RfV-wA-rRc">
+            <objects>
+                <viewController id="fit-p4-VGW" customClass="IAViewController" customModule="SAE2_fusion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hz6-A2-1Dg">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="fry-h7-F0T"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Assistant" image="sparkles" catalog="system" id="h8A-Jy-qmk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XLg-Nd-JnM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-143" y="1230"/>
         </scene>
         <!--Historique-->
         <scene sceneID="mB9-yh-oif">
@@ -737,7 +754,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QJd-9u-MhC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-254" y="1230"/>
+            <point key="canvasLocation" x="-966" y="1230"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -750,6 +767,7 @@
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="sparkles" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

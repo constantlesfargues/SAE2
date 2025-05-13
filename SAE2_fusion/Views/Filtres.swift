@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 struct Filtre {
-    var type: String? = nil       // "entree", "sortie", ou nil
+    var type: String? = nil
     var montantMin: Float? = nil
     var montantMax: Float? = nil
     var dateMin: Date? = nil
