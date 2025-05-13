@@ -10,47 +10,47 @@ import SwiftUI
 struct Historique: View {
     @ObservedObject var store: FluxStore
     @State private var isShowingNewScreen = false
+    @State private var filtreActuel = Filtre()
 
     var body: some View {
         NavigationStack {
             List {
                 Section("Votre historique") {
-                    ForEach(store.fluxs) { flux in
-                        NavigationLink(destination: Text(flux.enChaine())) {
+                    ForEach(store.fluxs.filter { matchFiltre($0) }) { flux in
+                        NavigationLink(destination: DetailFluxView(flux: flux)) {
                             VStack(alignment: .leading) {
-                                Text(flux.nomFlux)
-                                    .font(.headline)
-                                Text("\(flux.montantFlux, specifier: "%.2f") € - \(flux.typeFlux)")
-                                    .font(.subheadline)
+                                Text(flux.nomFlux).font(.headline)
+                                Text("\(flux.montantFlux, specifier: "%.2f") € - \(flux.typeFlux)").font(.subheadline)
                             }
                         }
-                    }
-                    .onDelete(perform: store.supprimerFlux) // 🔥 swipe-to-delete
+                    }.onDelete(perform: store.supprimerFlux)
                 }
             }
-            .refreshable {
-                store.rechargerDepuisJSON()
-            }
-            .onAppear {
-                store.rechargerDepuisJSON()
-            }
+            .refreshable { store.rechargerDepuisJSON() }
+            .onAppear { store.rechargerDepuisJSON() }
             .navigationTitle("Historique")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
+                    Button("Filtrer") {
                         isShowingNewScreen = true
-                    } label: {
-                        Text("Filtrer la sélection")
-                    }
-                    .sheet(isPresented: $isShowingNewScreen) {
-                        Filtres()
+                    }.sheet(isPresented: $isShowingNewScreen) {
+                        Filtres(filtre: $filtreActuel)
                     }
                 }
             }
         }
+    }
+
+    func matchFiltre(_ flux: Flux) -> Bool {
+        if let type = filtreActuel.type, flux.typeFlux != type { return false }
+        if let min = filtreActuel.montantMin, flux.montantFlux < min { return false }
+        if let max = filtreActuel.montantMax, flux.montantFlux > max { return false }
+        if let minDate = filtreActuel.dateMin, flux.dateFlux < minDate { return false }
+        if let maxDate = filtreActuel.dateMax, flux.dateFlux > maxDate { return false }
+        return true
     }
 }
 

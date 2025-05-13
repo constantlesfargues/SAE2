@@ -21,16 +21,16 @@ class FluxStore: ObservableObject {
         rechargerDepuisJSON()
     }
 
+    func supprimerFlux(at offsets: IndexSet) {
+        fluxs.remove(atOffsets: offsets)
+        AppDelegate.fluxs = fluxs
+        AppDelegate.actualiserJSON()
+    }
+
     func rechargerDepuisJSON() {
         if let fluxsLu = Flux.lireFlux(AppDelegate.users[0]) {
             self.fluxs = fluxsLu
             AppDelegate.fluxs = fluxsLu
         }
-    }
-    
-    func supprimerFlux(at offsets: IndexSet) {
-        fluxs.remove(atOffsets: offsets)
-        AppDelegate.fluxs = fluxs
-        AppDelegate.actualiserJSON()
     }
 }
