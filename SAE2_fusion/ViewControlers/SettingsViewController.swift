@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     // Outlet pour désactiver le bouton suprimer
     @IBOutlet weak var boutonSuprimer: UIButton!
     
+    
     // switch du mode sombre
     @IBOutlet weak var modeSombre: UISwitch!
 
