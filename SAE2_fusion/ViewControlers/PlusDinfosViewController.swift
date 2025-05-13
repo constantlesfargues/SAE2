@@ -12,8 +12,8 @@ class PlusDinfosViewController: UIViewController {
     @IBOutlet weak var choixUserSC: UISegmentedControl!
     @IBOutlet weak var infosLB: UILabel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        
+    func editText(){
         var leChoix : Int = choixUserSC.selectedSegmentIndex
         
         switch leChoix{
@@ -31,14 +31,21 @@ class PlusDinfosViewController: UIViewController {
             break
         default:
             break
-        
         }
-
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        editText()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func tapSurSC(_ sender: Any) {
+        editText()
+    }
+    
     /*
     // MARK: - Navigation
 
