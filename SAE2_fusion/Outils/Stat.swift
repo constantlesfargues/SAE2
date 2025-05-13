@@ -120,13 +120,23 @@ class Stat:Codable {
         }
         if !ok {return false}
         if let groupes {
-            for i in 0..<min(flux.groupesFlux.count,groupes.count) {
-                if groupes[i].nomGroupe != flux.groupesFlux[i].nomGroupe {
+            for groupe in groupes {
+                print(groupe.nomGroupe)
+                var okGrp:Bool = false
+                for g in flux.groupesFlux {
+                    print(g.nomGroupe)
+                    if g.nomGroupe.lowercased() == groupe.nomGroupe.lowercased() {
+                        okGrp = true
+                        break
+                    }
+                }
+                if !okGrp {
                     ok = false
                     break
                 }
             }
         }
+        print(ok)
         if !ok {return false}
         if let typeFlux {
             ok = typeFlux.lowercased() == flux.typeFlux.lowercased()
@@ -214,6 +224,7 @@ class Stat:Codable {
             }
             return AnyView(mkPie(data: dataFormat))
         }else if type == "line" || type == "bar" {
+            print(fluxs)
             var data:[Date:Float] = [:]
             var montant:Float = 0
             for flux in fluxs {

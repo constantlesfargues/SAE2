@@ -63,7 +63,6 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBAction func tapSurAjouter(_ sender: Any) {
         
         var laDuree : Int = 730
-        var lesGroupes : [Groupe] = [Groupe("Restaurant")]
         
         var leType : String
         if typeFluxSC.selectedSegmentIndex == 0{
