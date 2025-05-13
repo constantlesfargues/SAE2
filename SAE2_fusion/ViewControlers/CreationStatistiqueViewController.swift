@@ -61,6 +61,9 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cacherClavier))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
         typeStatPV.delegate = self
         typeStatPV.dataSource = self
         
@@ -102,6 +105,10 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
             tagTF.text = laStat.tag
             
         }
+    }
+    
+    @objc func cacherClavier() {
+        view.endEditing(true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -46,7 +46,7 @@ struct Historique: View {
                         isShowingNewScreen = true
                     }
                     .sheet(isPresented: $isShowingNewScreen, onDismiss: {
-                        refreshID = UUID() // 🔁 Forcer mise à jour
+                        refreshID = UUID()
                     }) {
                         Filtres(filtre: $filtreActuel)
                     }

@@ -138,11 +138,17 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cacherClavier))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
         validationLB.text = ""
         
         self.laTableView.delegate = self
         self.laTableView.dataSource = self
         // Do any additional setup after loading the view.
+    }
+    @objc func cacherClavier() {
+        view.endEditing(true)
     }
     
     

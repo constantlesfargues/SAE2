@@ -15,64 +15,63 @@ struct ContentView: View {
     @AppStorage("useAPIKey") private var useAPIKey: Bool = false
     @AppStorage("apiKey") private var apiKey: String = ""
     
-    @State private var prompt: String = ""
-    @State private var response: String = ""
+    @State private var revenusMensuels: String = ""
+    @State private var objectifs: String = ""
+    @State private var interets: String = ""
+    @State private var autreInfo: String = ""
+    @State private var planPropose: String = ""
     @State private var isLoading = false
     @State private var showParameters = false
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 16) {
-                TextField("Pose ta question ici", text: $prompt)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal)
-                
-                if isLoading {
-                    ProgressView("Réflexion en cours…")
-                } else {
-                    ScrollView {
-                        Text(response)
-                            .padding()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color.gray.opacity(0.1))
-                            .cornerRadius(10)
-                            .padding(.horizontal)
+        ZStack {
+            KeyboardDismissTapArea()
+            NavigationView {
+                Form {
+                    Section(header: Text("Données utilisateur")) {
+                        TextField("Revenus mensuels (€)", text: $revenusMensuels)
+                            .keyboardType(.decimalPad)
+                        TextField("Objectifs financiers", text: $objectifs)
+                        TextField("Centres d'intérêt", text: $interets)
+                        TextField("Autres infos utiles", text: $autreInfo)
+                    }
+                    
+                    Section {
+                        Button("Générer un plan d'investissement", action: genererPlan)
+                            .disabled(revenusMensuels.isEmpty || objectifs.isEmpty)
+                    }
+                    
+                    if isLoading {
+                        Section { ProgressView("Analyse...") }
+                    } else if !planPropose.isEmpty {
+                        Section(header: Text("Plan proposé")) {
+                            ScrollView {
+                                Text(planPropose).padding(.vertical)
+                            }
+                        }
                     }
                 }
-                
-                Button(action: envoyerAuLLM) {
-                    Text("Envoyer")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                }
-            }
-            .navigationTitle("Assistant")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: { showParameters = true }) {
-                        Image(systemName: "gearshape")
+                .navigationTitle("Mon Plan Financier")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: { showParameters = true }) {
+                            Image(systemName: "gearshape")
+                        }
                     }
                 }
+                .sheet(isPresented: $showParameters) {
+                    ParametresLLMView()
+                }
             }
-            .sheet(isPresented: $showParameters) {
-                ParametresLLMView()
-            }
-            .background(KeyboardDismissTapArea())
         }
     }
     
-    func envoyerAuLLM() {
-        guard !prompt.isEmpty else { return }
-        
+    func genererPlan() {
         isLoading = true
-        response = ""
+        planPropose = ""
         
         guard let url = URL(string: apiURL + endpoint) else {
-            response = "URL invalide"
+            planPropose = "URL invalide"
             isLoading = false
             return
         }
@@ -80,33 +79,27 @@ struct ContentView: View {
         var request = URLRequest(url: url, timeoutInterval: 120)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         if useAPIKey && !apiKey.isEmpty {
             request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         }
         
-        let json: [String: Any]
-        if useChatFormat {
-            json = [
-                "model": modelName,
-                "messages": [
-                    ["role": "system", "content": "Tu es un assistant francophone, clair et utile."],
-                    ["role": "user", "content": prompt]
-                ],
-                "temperature": 0.7
-            ]
-        } else {
-            let instruction = "Tu es un assistant francophone, clair et utile."
-            let fullPrompt = "\(instruction)\n\nUtilisateur : \(prompt)\nAssistant :"
-            json = [
-                "model": modelName,
-                "prompt": fullPrompt,
-                "temperature": 0.7
-            ]
-        }
+        let prompt = "Tu es un conseiller financier. Génère un plan d'investissement adapté à une personne qui a \(revenusMensuels)€ de revenus mensuels, vise : \(objectifs), aime : \(interets), autres infos : \(autreInfo)."
+        
+        let json: [String: Any] = useChatFormat ? [
+            "model": modelName,
+            "messages": [
+                ["role": "system", "content": "Tu es un assistant financier clair et francophone."],
+                ["role": "user", "content": prompt]
+            ],
+            "temperature": 0.7
+        ] : [
+            "model": modelName,
+            "prompt": prompt,
+            "temperature": 0.7
+        ]
         
         guard let httpBody = try? JSONSerialization.data(withJSONObject: json) else {
-            response = "Erreur JSON"
+            planPropose = "Erreur JSON"
             isLoading = false
             return
         }
@@ -117,7 +110,7 @@ struct ContentView: View {
             DispatchQueue.main.async {
                 isLoading = false
                 guard error == nil, let data = data else {
-                    response = "Erreur réseau ou serveur injoignable"
+                    planPropose = "Erreur réseau ou serveur"
                     return
                 }
                 
@@ -125,16 +118,16 @@ struct ContentView: View {
                    let choices = json["choices"] as? [[String: Any]] {
                     if let message = choices.first?["message"] as? [String: Any],
                        let content = message["content"] as? String {
-                        response = nettoyerTexte(content)
+                        planPropose = nettoyerTexte(content)
                     } else if let text = choices.first?["text"] as? String {
-                        response = nettoyerTexte(text)
+                        planPropose = nettoyerTexte(text)
                     } else {
-                        response = "Format de réponse inattendu"
+                        planPropose = "Format de réponse inattendu"
                     }
                 } else if let str = String(data: data, encoding: .utf8) {
-                    response = "Réponse brute : \(str)"
+                    planPropose = "Réponse brute : \(str)"
                 } else {
-                    response = "Réponse illisible"
+                    planPropose = "Réponse illisible"
                 }
             }
         }.resume()
