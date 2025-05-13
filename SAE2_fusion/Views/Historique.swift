@@ -15,6 +15,12 @@ struct Historique: View {
     var body: some View {
         NavigationStack {
             List {
+                Section(header: Text("Solde total")) {
+                    Text("\(totalFluxFormatted())")
+                        .foregroundColor(totalFlux() >= 0 ? .green : .red)
+                        .fontWeight(.bold)
+                }
+
                 Section("Votre historique") {
                     ForEach(store.fluxs.filter { matchFiltre($0) }) { flux in
                         NavigationLink(destination: DetailFluxView(flux: flux)) {
@@ -51,6 +57,17 @@ struct Historique: View {
         if let minDate = filtreActuel.dateMin, flux.dateFlux < minDate { return false }
         if let maxDate = filtreActuel.dateMax, flux.dateFlux > maxDate { return false }
         return true
+    }
+
+    func totalFlux() -> Float {
+        store.fluxs.reduce(0) { total, flux in
+            flux.typeFlux == "entree" ? total + flux.montantFlux : total - flux.montantFlux
+        }
+    }
+
+    func totalFluxFormatted() -> String {
+        let montant = totalFlux()
+        return String(format: "%.2f €", montant)
     }
 }
 
