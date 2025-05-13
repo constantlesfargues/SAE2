@@ -8,7 +8,7 @@
 import UIKit
 
 class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    
     
     @IBOutlet weak var typeFluxSC: UISegmentedControl!
     @IBOutlet weak var nomFluxTF: UITextField!
@@ -22,7 +22,7 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var laTableView: UITableView!
     
     public var lesGroupes:[Groupe] = []
-
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         1
@@ -41,7 +41,7 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         return cell
     }
-
+    
     
     
     @IBAction func tapAjouterGroupe(_ sender: Any) {
@@ -50,7 +50,7 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
             self.laTableView.reloadData()
         }
     }
-
+    
     @IBAction func tapSurAnnuler(_ sender: Any) {
         nomFluxTF.text = ""
         montantFluxTF.text = ""
@@ -138,7 +138,6 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
         validationLB.text = ""
         
         self.laTableView.delegate = self
@@ -146,15 +145,15 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
         // Do any additional setup after loading the view.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

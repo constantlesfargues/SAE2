@@ -16,7 +16,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     // switch du mode sombre
     @IBOutlet weak var modeSombre: UISwitch!
-
+    
     // pop up lors de l'ajout d'un Utilisateur
     public var alertAjout : UIAlertController!
     // pop up de la supression d'un Utilisateur
@@ -25,7 +25,6 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
         // setup la roue des Utilisateurs
         UtilisateurPicker.dataSource = self
         UtilisateurPicker.delegate = self
@@ -51,7 +50,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // Ajout des boutons de la pop up
         let cancelAction = UIAlertAction(title: "Annuler", style: .cancel, handler: nil)
         let saveAction = UIAlertAction(title: "Enregistrer", style: .default) { _ in
-
+            
             // récupere le nom entré dans la pop up
             let inputName = self.alertAjout.textFields![0].text
             
@@ -90,7 +89,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             Parametres.ecrireParam(AppDelegate.users[indiceUserSupr], Parametres(isNull:true) )
             
             AppDelegate.users.remove(at: indiceUserSupr)// suprime l'utilisateur d'indice sélectioné
-        
+            
             Utilisateur.ecrireUtilisateur(AppDelegate.users)// actualise le JSON avec les utilisateurs actuels
             
             self.UtilisateurPicker.reloadAllComponents()// actualise l'affichage des Utilisateurs

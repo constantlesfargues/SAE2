@@ -40,13 +40,13 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
     ]
     
     @IBOutlet weak var nomTF: UITextField!
-
+    
     @IBOutlet weak var tagTF: UITextField!
     
     @IBOutlet weak var typeStatPV: UIPickerView!
     
     @IBOutlet weak var dateMinDP: UIDatePicker!
-
+    
     @IBOutlet weak var dateMaxDP: UIDatePicker!
     
     @IBOutlet weak var typeFluxSC: UISegmentedControl!
@@ -61,7 +61,6 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
         typeStatPV.delegate = self
         typeStatPV.dataSource = self
         
@@ -157,14 +156,14 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
         if nomTF.text! != "" {
             
             let nvStat = Stat(id: id, nomTF.text!,
-                     lesTypes[typeStatPV.selectedRow(inComponent: 0)],
-                     lesGroupes,
-                     lesTypesFlux[typeFluxSC.selectedSegmentIndex],
-                     dateMinDP.date,
-                     dateMaxDP.date,
-                     tagTF.text! != "" ? tagTF.text!:nil,
-                     tableRecurrence[recurrentSC.selectedSegmentIndex]
-                    )
+                              lesTypes[typeStatPV.selectedRow(inComponent: 0)],
+                              lesGroupes,
+                              lesTypesFlux[typeFluxSC.selectedSegmentIndex],
+                              dateMinDP.date,
+                              dateMaxDP.date,
+                              tagTF.text! != "" ? tagTF.text!:nil,
+                              tableRecurrence[recurrentSC.selectedSegmentIndex]
+            )
             if modifier {
                 AppDelegate.modifierStat(idAModif, nvStat)
             }else {
@@ -184,13 +183,13 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
     
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

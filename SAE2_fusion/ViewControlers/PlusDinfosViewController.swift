@@ -11,8 +11,8 @@ class PlusDinfosViewController: UIViewController {
     
     @IBOutlet weak var choixUserSC: UISegmentedControl!
     @IBOutlet weak var infosLB: UILabel!
-
-        
+    
+    
     func editText(){
         var leChoix : Int = choixUserSC.selectedSegmentIndex
         
@@ -39,9 +39,8 @@ class PlusDinfosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
         editText()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -50,13 +49,13 @@ class PlusDinfosViewController: UIViewController {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

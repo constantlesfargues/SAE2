@@ -28,13 +28,13 @@ extension Binding {
 struct Filtres: View {
     @Binding var filtre: Filtre
     @Environment(\.dismiss) var dismiss
-
+    
     @State private var typeSelection = 0
     @State private var montantMin: String = ""
     @State private var montantMax: String = ""
     @State private var dateMin: Date? = nil
     @State private var dateMax: Date? = nil
-
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -45,12 +45,12 @@ struct Filtres: View {
                         Text("Sortie").tag(2)
                     }.pickerStyle(.segmented)
                 }
-
+                
                 Section(header: Text("Montant")) {
                     TextField("Montant minimum", text: $montantMin).keyboardType(.decimalPad)
                     TextField("Montant maximum", text: $montantMax).keyboardType(.decimalPad)
                 }
-
+                
                 Section(header: Text("Dates")) {
                     Toggle("Filtrer par date", isOn: Binding(
                         get: { dateMin != nil && dateMax != nil },
@@ -64,13 +64,13 @@ struct Filtres: View {
                             }
                         }
                     ))
-
+                    
                     if dateMin != nil && dateMax != nil {
                         DatePicker("De", selection: Binding($dateMin, replacingNilWith: Date()), displayedComponents: .date)
                         DatePicker("À", selection: Binding($dateMax, replacingNilWith: Date()), displayedComponents: .date)
                     }
                 }
-
+                
                 Section {
                     Button("Appliquer le filtre") {
                         var newFiltre = Filtre()
@@ -83,15 +83,16 @@ struct Filtres: View {
                         filtre = newFiltre
                         dismiss()
                     }
-
+                    
                     Button("Réinitialiser") {
                         filtre = Filtre()
                         dismiss()
                     }.foregroundColor(.red)
                 }
-            }.navigationTitle("Filtres")
+            }
+            .navigationTitle("Filtres")
+            .background(KeyboardDismissTapArea())
         }
-        .dismissKeyboardOnTap()
     }
 }
 

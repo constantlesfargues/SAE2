@@ -1,4 +1,3 @@
-
 import Foundation
 
 class Utilisateur : Codable {
@@ -47,7 +46,7 @@ class Utilisateur : Codable {
         }
     }
     
-    // vérifie que le nouvNomUser n'est pas nil ou deja pris 
+    // vérifie que le nouvNomUser n'est pas nil ou deja pris
     public static func nomPossible(_ tabUsers : [Utilisateur] ,_ nouvNomUser : String? ) -> Bool {
         if ( nouvNomUser == nil ){
             return false

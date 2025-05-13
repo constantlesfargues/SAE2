@@ -27,26 +27,26 @@ class Flux : Codable, Identifiable{
         let fileManager = FileManager.default
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         let fileURL = urls.first!.appendingPathComponent("\(user.getNomFormate())Flux.json")
-
+        
         let encoder = JSONEncoder()
         if let dataToSave = try? encoder.encode(lesFlux) {
             fileManager.createFile(atPath: fileURL.path, contents: dataToSave, attributes: nil)
         }
     }
-
+    
     // Renvoie les flux lus depuis "<nom utilisateur>Flux.json"
     public static func lireFlux(_ user: Utilisateur) -> [Flux]? {
         let fileManager = FileManager.default
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         let fileURL = urls.first!.appendingPathComponent("\(user.getNomFormate())Flux.json")
-
+        
         guard fileManager.fileExists(atPath: fileURL.path),
               let data = try? Data(contentsOf: fileURL),
               let flux = try? JSONDecoder().decode([Flux].self, from: data)
         else {
             return nil
         }
-
+        
         return flux
     }
     

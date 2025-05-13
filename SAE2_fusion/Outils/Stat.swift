@@ -20,13 +20,13 @@ class Stat:Codable {
     public var tag:String?
     public var recurrent:Bool?
     public init(id:Int,_ name:String
-         ,_ type:String
-         ,_ groupes:[Groupe]?
-         ,_ typeFlux:String?
-         ,_ dateMin:Date?
-         ,_ dateMax:Date?
-         ,_ tag:String?
-         ,_ recurrent:Bool?
+                ,_ type:String
+                ,_ groupes:[Groupe]?
+                ,_ typeFlux:String?
+                ,_ dateMin:Date?
+                ,_ dateMax:Date?
+                ,_ tag:String?
+                ,_ recurrent:Bool?
     ){
         self.id = id
         self.name = name
@@ -44,26 +44,26 @@ class Stat:Codable {
         let fileManager = FileManager.default
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         let fileURL = urls.first!.appendingPathComponent("\(user.getNomFormate())Stats.json")
-
+        
         let encoder = JSONEncoder()
         if let dataToSave = try? encoder.encode(lesStats) {
             fileManager.createFile(atPath: fileURL.path, contents: dataToSave, attributes: nil)
         }
     }
-
+    
     // Renvoie les stats lus depuis "<nom utilisateur>Stats.json"
     public static func lireFlux(_ user: Utilisateur) -> [Stat]? {
         let fileManager = FileManager.default
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         let fileURL = urls.first!.appendingPathComponent("\(user.getNomFormate())Stats.json")
-
+        
         guard fileManager.fileExists(atPath: fileURL.path),
               let data = try? Data(contentsOf: fileURL),
               let flux = try? JSONDecoder().decode([Stat].self, from: data)
         else {
             return nil
         }
-
+        
         return flux
     }
     
@@ -258,70 +258,70 @@ class Stat:Codable {
             }
             return AnyView(mkBar(data:arrData))
         }/*else if type == "area" {
-            var groupesSet:Set<String> = Set()
-            groupesSet.insert("autre")
-            for flux in fluxs {
-                for groupe in flux.groupesFlux {
-                    groupesSet.insert(groupe.nomGroupe)
-                }
-            }
-            let groupes = groupesSet.sorted()
-            //print(groupes,"\n")
-            var data:[(date:Date,montant:Float,groupe:String)] = []
-            for flux in fluxs {
-                if checkFlux(flux) {
-                        for subGroupe in groupes {
-                            var montant:Float = 0
-                            if subGroupe == "autre" && flux.groupesFlux.isEmpty {
-                                montant += flux.montantFlux
-                            }else {
-                                for groupe in flux.groupesFlux {
-                                    if groupe.nomGroupe == subGroupe {
-                                        montant += flux.montantFlux/Float(flux.groupesFlux.count)
-                                        break
-                                    }
-                                }
-                            }
-                            if montant < 0 {
-                                data.append((date:flux.dateFlux,montant:0,groupe:subGroupe))
-                            }
-                            data.append((date:flux.dateFlux,montant:montant,groupe:subGroupe))
-                        }
-                    /*
-                    if let negative {
-                        for i in data.count-groupes.count..<data.count {
-                            data[i].montant = negative/Float(groupes.count)
-                        }
-                    }
-                     */
-                    
-                }
-            }
-            if !data.isEmpty {
-                var isSorted = false
-                //print(data,"\n")
-                while !isSorted {
-                    isSorted = true
-                    for i in 0..<data.count-1 {
-                        if data[i].date > data[i+1].date {
-                            isSorted = false
-                            let temp = data[i]
-                            data[i] = data[i+1]
-                            data[i+1] = temp
-                        }
-                    }
-                }
-                
-                //print(data)
-                /*
-                 if data.count > 1 {
-                 for i in 1..<data.count {
-                 data[i].montant += data[i-1].montant
-                 }
-                 }*/
-            }
-            return AnyView(mkArea(data: data))
-        }*/
+          var groupesSet:Set<String> = Set()
+          groupesSet.insert("autre")
+          for flux in fluxs {
+          for groupe in flux.groupesFlux {
+          groupesSet.insert(groupe.nomGroupe)
+          }
+          }
+          let groupes = groupesSet.sorted()
+          //print(groupes,"\n")
+          var data:[(date:Date,montant:Float,groupe:String)] = []
+          for flux in fluxs {
+          if checkFlux(flux) {
+          for subGroupe in groupes {
+          var montant:Float = 0
+          if subGroupe == "autre" && flux.groupesFlux.isEmpty {
+          montant += flux.montantFlux
+          }else {
+          for groupe in flux.groupesFlux {
+          if groupe.nomGroupe == subGroupe {
+          montant += flux.montantFlux/Float(flux.groupesFlux.count)
+          break
+          }
+          }
+          }
+          if montant < 0 {
+          data.append((date:flux.dateFlux,montant:0,groupe:subGroupe))
+          }
+          data.append((date:flux.dateFlux,montant:montant,groupe:subGroupe))
+          }
+          /*
+           if let negative {
+           for i in data.count-groupes.count..<data.count {
+           data[i].montant = negative/Float(groupes.count)
+           }
+           }
+           */
+          
+          }
+          }
+          if !data.isEmpty {
+          var isSorted = false
+          //print(data,"\n")
+          while !isSorted {
+          isSorted = true
+          for i in 0..<data.count-1 {
+          if data[i].date > data[i+1].date {
+          isSorted = false
+          let temp = data[i]
+          data[i] = data[i+1]
+          data[i+1] = temp
+          }
+          }
+          }
+          
+          //print(data)
+          /*
+           if data.count > 1 {
+           for i in 1..<data.count {
+           data[i].montant += data[i-1].montant
+           }
+           }*/
+          }
+          return AnyView(mkArea(data: data))
+          }*/
         return AnyView(mkEmpty())
     }
 }

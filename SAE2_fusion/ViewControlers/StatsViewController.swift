@@ -90,7 +90,6 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
         tags = AppDelegate.getTags()
         stats = AppDelegate.stats
         tagPV.delegate = self
@@ -124,7 +123,7 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return stats.count
@@ -155,16 +154,16 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "statSegue" {
             /*AppDelegate.fluxs = [
-                Flux(nomFlux: "f3", montantFlux: -60, typeFlux: "sortie", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*999), groupesFlux: [], frequenceFlux: 0, dureeFlux: 0),
-                Flux(nomFlux: "f1", montantFlux: 50, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*1000), groupesFlux: [Groupe("g2")], frequenceFlux: 0, dureeFlux: 0),
-                Flux(nomFlux: "f1", montantFlux: 40, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*1001), groupesFlux: [Groupe("g2"),Groupe("g1")], frequenceFlux: 0, dureeFlux: 0),
-                
-                Flux(nomFlux: "f2", montantFlux: 30, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate:60*60*24*1002), groupesFlux: [Groupe("g1")], frequenceFlux: 0, dureeFlux: 0),
-                Flux(nomFlux: "f2", montantFlux: 30, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate:60*60*24*1003), groupesFlux: [Groupe("g2"),Groupe("g1")], frequenceFlux: 0, dureeFlux: 0),
-                Flux(nomFlux: "f3", montantFlux: -25, typeFlux: "sortie", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*1004), groupesFlux: [Groupe("g1")], frequenceFlux: 0, dureeFlux: 0),
-                Flux(nomFlux: "f3", montantFlux: -25, typeFlux: "sortie", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*1005), groupesFlux: [], frequenceFlux: 0, dureeFlux: 0),
-                Flux(nomFlux: "recTest", montantFlux: -50, typeFlux: "sortie", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*1000), groupesFlux: [Groupe("rec")], frequenceFlux: 1, dureeFlux: 0)
-            ]*/
+             Flux(nomFlux: "f3", montantFlux: -60, typeFlux: "sortie", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*999), groupesFlux: [], frequenceFlux: 0, dureeFlux: 0),
+             Flux(nomFlux: "f1", montantFlux: 50, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*1000), groupesFlux: [Groupe("g2")], frequenceFlux: 0, dureeFlux: 0),
+             Flux(nomFlux: "f1", montantFlux: 40, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*1001), groupesFlux: [Groupe("g2"),Groupe("g1")], frequenceFlux: 0, dureeFlux: 0),
+             
+             Flux(nomFlux: "f2", montantFlux: 30, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate:60*60*24*1002), groupesFlux: [Groupe("g1")], frequenceFlux: 0, dureeFlux: 0),
+             Flux(nomFlux: "f2", montantFlux: 30, typeFlux: "entree", dateFlux: Date(timeIntervalSinceReferenceDate:60*60*24*1003), groupesFlux: [Groupe("g2"),Groupe("g1")], frequenceFlux: 0, dureeFlux: 0),
+             Flux(nomFlux: "f3", montantFlux: -25, typeFlux: "sortie", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*1004), groupesFlux: [Groupe("g1")], frequenceFlux: 0, dureeFlux: 0),
+             Flux(nomFlux: "f3", montantFlux: -25, typeFlux: "sortie", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*1005), groupesFlux: [], frequenceFlux: 0, dureeFlux: 0),
+             Flux(nomFlux: "recTest", montantFlux: -50, typeFlux: "sortie", dateFlux: Date(timeIntervalSinceReferenceDate: 60*60*24*1000), groupesFlux: [Groupe("rec")], frequenceFlux: 1, dureeFlux: 0)
+             ]*/
             
             let cell = sender as! StatsCell
             print(cell.i)
@@ -178,5 +177,5 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
         }
         
     }
-
+    
 }

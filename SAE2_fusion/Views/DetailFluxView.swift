@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DetailFluxView: View {
     let flux: Flux
-
+    
     var body: some View {
         Form {
             Section(header: Text("Nom")) {
@@ -38,7 +38,7 @@ struct DetailFluxView: View {
             }
         }.navigationTitle("Détail")
     }
-
+    
     var dateFormatter: DateFormatter {
         let df = DateFormatter()
         df.dateStyle = .medium
