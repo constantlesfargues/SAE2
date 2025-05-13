@@ -63,7 +63,6 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBAction func tapSurAjouter(_ sender: Any) {
         
         var laDuree : Int = 730
-        var lesGroupes : [Groupe] = [Groupe("Restaurant")]
         
         var leType : String
         if typeFluxSC.selectedSegmentIndex == 0{
@@ -131,6 +130,8 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
             validationLB.text = "Le flux a bien été ajouté!"
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.validationLB.text = ""
+                self.lesGroupes.removeAll()
+                self.laTableView.reloadData()
             }
         }
     }
