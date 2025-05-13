@@ -449,7 +449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGy-Jb-ibj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="287.78625954198475" y="2719.7183098591549"/>
+            <point key="canvasLocation" x="1073" y="2720"/>
         </scene>
         <!--Stat Hosting Controller-->
         <scene sceneID="82x-SJ-oWx">
@@ -459,7 +459,7 @@
                 </hostingController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPt-Ey-v2q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1115" y="2720"/>
+            <point key="canvasLocation" x="323" y="2720"/>
         </scene>
         <!--Plus Dinfos View Controller-->
         <scene sceneID="ljR-Xd-6fB">

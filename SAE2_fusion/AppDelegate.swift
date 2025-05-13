@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Les Utilisateurs
     // le premier ( AppDelegate.users[0] ) est celui actuelement utilisé
-    public static var users : [Utilisateur] = [Utilisateur("initial-test")]
+    public static var users : [Utilisateur] = [Utilisateur("default")]
     
     // Parametres de l'utilisateur actuel
     public static var param : Parametres = Parametres()
