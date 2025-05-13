@@ -20,16 +20,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Compte et options" id="6po-TW-Ygn">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="lZn-Un-Qbb">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0lf-FK-jKq">
-                                                <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="gray" image="questionmark" catalog="system" title=""/>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Compte et options" id="6po-TW-Ygn"/>
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7N-M3-XWT">
@@ -99,6 +90,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQ4-uS-xOR">
+                                <rect key="frame" x="95" y="143" width="33" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="?"/>
+                                <connections>
+                                    <segue destination="f08-gw-V1v" kind="showDetail" id="Olo-7C-xww"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Kg-YM-sFq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -109,7 +109,6 @@
                         <outlet property="UtilisateurPicker" destination="jHe-Qu-2jc" id="lRv-3V-OUz"/>
                         <outlet property="boutonSuprimer" destination="j0H-9J-9bw" id="RLY-b1-rhA"/>
                         <outlet property="modeSombre" destination="k0Y-4R-fQW" id="d0T-Zc-lGE"/>
-                        <segue destination="f08-gw-V1v" kind="show" identifier="afficheInfos" id="uY6-Xd-QHz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lda-Kb-fKV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -467,7 +466,7 @@
             <objects>
                 <viewController id="f08-gw-V1v" customClass="PlusDinfosViewController" customModule="SAE2_fusion" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4fv-S3-DSf">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plus d'informations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thS-Pg-SZk">
@@ -486,6 +485,9 @@
                                     <segment title="Stats"/>
                                     <segment title="Paramètres"/>
                                 </segments>
+                                <connections>
+                                    <action selector="tapSurSC:" destination="f08-gw-V1v" eventType="valueChanged" id="o2g-F1-Dc3"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMH-yl-FNS">
                                 <rect key="frame" x="16" y="211" width="357" height="558"/>
@@ -748,7 +750,6 @@
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="questionmark" catalog="system" width="94" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
