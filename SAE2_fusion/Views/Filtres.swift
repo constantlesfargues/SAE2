@@ -91,6 +91,7 @@ struct Filtres: View {
                 }
             }.navigationTitle("Filtres")
         }
+        .dismissKeyboardOnTap()
     }
 }
 

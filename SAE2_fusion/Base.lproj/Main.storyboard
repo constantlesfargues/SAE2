@@ -113,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lda-Kb-fKV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2108" y="1973"/>
+            <point key="canvasLocation" x="1897" y="1973"/>
         </scene>
         <!--Paramètres-->
         <scene sceneID="pHQ-Ab-T4R">
@@ -130,7 +130,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B4L-kn-8wu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2109" y="1230"/>
+            <point key="canvasLocation" x="1897" y="1230"/>
         </scene>
         <!--Stat-->
         <scene sceneID="KA8-08-1C5">
@@ -147,7 +147,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngB-Nn-xLu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="711" y="1230"/>
+            <point key="canvasLocation" x="775" y="1230"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="E5M-sB-9KC">
@@ -277,7 +277,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egc-4M-l8t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="710.68702290076328" y="1972.5352112676057"/>
+            <point key="canvasLocation" x="775" y="1973"/>
         </scene>
         <!--Creation Statistique View Controller-->
         <scene sceneID="auD-Eh-kDf">
@@ -450,7 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGy-Jb-ibj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="287.78625954198475" y="2719.7183098591549"/>
+            <point key="canvasLocation" x="387" y="2720"/>
         </scene>
         <!--Stat Hosting Controller-->
         <scene sceneID="82x-SJ-oWx">
@@ -460,7 +460,7 @@
                 </hostingController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPt-Ey-v2q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1115" y="2720"/>
+            <point key="canvasLocation" x="1129" y="2720"/>
         </scene>
         <!--Plus Dinfos View Controller-->
         <scene sceneID="ljR-Xd-6fB">
@@ -477,19 +477,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xlu-Da-mu7">
-                                <rect key="frame" x="10" y="139" width="363" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Historique"/>
-                                    <segment title="Ajout"/>
-                                    <segment title="Stats"/>
-                                    <segment title="Paramètres"/>
-                                </segments>
-                                <connections>
-                                    <action selector="tapSurSC:" destination="f08-gw-V1v" eventType="valueChanged" id="o2g-F1-Dc3"/>
-                                </connections>
-                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMH-yl-FNS">
                                 <rect key="frame" x="16" y="211" width="357" height="558"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -497,6 +484,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xlu-Da-mu7">
+                                <rect key="frame" x="23" y="139" width="342" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Historique"/>
+                                    <segment title="Ajout"/>
+                                    <segment title="Stats"/>
+                                    <segment title="Paramètres"/>
+                                    <segment title="Assistant"/>
+                                </segments>
+                                <connections>
+                                    <action selector="tapSurSC:" destination="f08-gw-V1v" eventType="valueChanged" id="o2g-F1-Dc3"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hIm-ey-NgG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -509,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W4u-PB-SqE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2107.6335877862593" y="2719.7183098591549"/>
+            <point key="canvasLocation" x="1897" y="2720"/>
         </scene>
         <!--Ajouter Flux-->
         <scene sceneID="mkE-q6-15p">
@@ -722,7 +723,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9g-uU-UYz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1758" y="1230"/>
+            <point key="canvasLocation" x="-1593" y="1230"/>
         </scene>
         <!--Assistant-->
         <scene sceneID="RfV-wA-rRc">
@@ -738,7 +739,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLg-Nd-JnM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-143" y="1230"/>
+            <point key="canvasLocation" x="-33" y="1230"/>
         </scene>
         <!--Historique-->
         <scene sceneID="mB9-yh-oif">
@@ -754,7 +755,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QJd-9u-MhC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-966" y="1230"/>
+            <point key="canvasLocation" x="-840" y="1230"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

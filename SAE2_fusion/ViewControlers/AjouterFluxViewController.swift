@@ -138,7 +138,7 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        hideKeyboardWhenTappedAround()
         validationLB.text = ""
         
         self.laTableView.delegate = self

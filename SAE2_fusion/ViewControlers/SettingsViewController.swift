@@ -25,7 +25,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        hideKeyboardWhenTappedAround()
         // setup la roue des Utilisateurs
         UtilisateurPicker.dataSource = self
         UtilisateurPicker.delegate = self

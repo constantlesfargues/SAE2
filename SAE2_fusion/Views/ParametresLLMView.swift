@@ -49,55 +49,60 @@ struct ParametresLLMView: View {
 
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("Choix du profil")) {
-                    Picker("Profil", selection: $selectedProfile) {
-                        ForEach(ProfilLLM.allCases) { profil in
-                            Text(profil.rawValue).tag(profil)
+            ZStack {
+                Color.clear // pour capter le tap
+
+                Form {
+                    Section(header: Text("Choix du profil")) {
+                        Picker("Profil", selection: $selectedProfile) {
+                            ForEach(ProfilLLM.allCases) { profil in
+                                Text(profil.rawValue).tag(profil)
+                            }
+                        }
+                        .onChange(of: selectedProfile) { newProfil in
+                            let config = newProfil.configuration
+                            apiURL = config.url
+                            endpoint = config.endpoint
+                            modelName = config.model
+                            useAPIKey = config.useAPIKey
+                            apiKey = config.apiKey
+                            useChatFormat = config.chatFormat
                         }
                     }
-                    .onChange(of: selectedProfile) { newProfil in
-                        let config = newProfil.configuration
-                        apiURL = config.url
-                        endpoint = config.endpoint
-                        modelName = config.model
-                        useAPIKey = config.useAPIKey
-                        apiKey = config.apiKey
-                        useChatFormat = config.chatFormat
-                    }
-                }
 
-                Section(header: Text("Paramètres de connexion")) {
-                    TextField("URL du serveur", text: $apiURL)
-                    TextField("Endpoint", text: $endpoint)
-                    TextField("Nom du modèle", text: $modelName)
-                    Toggle("Format Chat (messages)", isOn: $useChatFormat)
-                }
-
-                Section(header: Text("Authentification")) {
-                    Toggle("Utiliser une clé API", isOn: $useAPIKey)
-                    if useAPIKey {
-                        SecureField("Clé API", text: $apiKey)
+                    Section(header: Text("Paramètres de connexion")) {
+                        TextField("URL du serveur", text: $apiURL)
+                        TextField("Endpoint", text: $endpoint)
+                        TextField("Nom du modèle", text: $modelName)
+                        Toggle("Format Chat (messages)", isOn: $useChatFormat)
                     }
-                }
 
-                Section {
-                    Button("Tester la connexion") {
-                        testerConnexion()
+                    Section(header: Text("Authentification")) {
+                        Toggle("Utiliser une clé API", isOn: $useAPIKey)
+                        if useAPIKey {
+                            SecureField("Clé API", text: $apiKey)
+                        }
                     }
-                    if !testResponse.isEmpty {
-                        Text(testResponse)
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    }
-                }
 
-                Section {
-                    Button("✅ Appliquer et revenir") {
-                        dismiss()
+                    Section {
+                        Button("Tester la connexion") {
+                            testerConnexion()
+                        }
+                        if !testResponse.isEmpty {
+                            Text(testResponse)
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                        }
+                    }
+
+                    Section {
+                        Button("✅ Appliquer et revenir") {
+                            dismiss()
+                        }
                     }
                 }
             }
+            .dismissKeyboardOnTap() // tap global actif
             .navigationTitle("Paramètres LLM")
             .onAppear {
                 detectProfilActuel()
@@ -178,4 +183,8 @@ struct ParametresLLMView: View {
             }
         }.resume()
     }
+}
+
+#Preview {
+    ParametresLLMView()
 }

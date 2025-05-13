@@ -90,6 +90,7 @@ class StatsViewController: UITableViewController,UIPickerViewDelegate,UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         tags = AppDelegate.getTags()
         stats = AppDelegate.stats
         tagPV.delegate = self

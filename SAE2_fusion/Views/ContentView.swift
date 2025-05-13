@@ -52,7 +52,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationTitle("Mon Plan Financier")
+            .navigationTitle("Mon plan d'épargne")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { showParameters = true }) {
@@ -64,6 +64,7 @@ struct ContentView: View {
                 ParametresLLMView()
             }
         }
+        .dismissKeyboardOnTap()
     }
 
     func genererPlan() {

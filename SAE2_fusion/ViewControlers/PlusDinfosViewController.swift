@@ -29,6 +29,9 @@ class PlusDinfosViewController: UIViewController {
         case 3:
             infosLB.text = "La page Paramètres est celle d'où vous venez. C'est la page qui permet le fonctionnement de l'application, car c'est elle qui gère l'ensemble des profils existants sur votre application. Vous pourrez créer un profil en cliquant sur l'icone '+', renseigner son nom, puis une fois le profil rajouté, il vous suffira de le sélectionner sur la liste juste au dessus, puis de cliquer sur le bouton 'Sélectionner' pour pouvoir créer des flux et les visualiser sur ce profil.\nEn effet, si vous ajoutez des flux dans un profil, et que vous souhaitez changer de profil, en sélectionnant un autre profil vous ne pourrez plus voir les flux du dernier profil sur lequel vous étiez, à moins de le resélectionner comme profil principal.\nVous pourrez également, pour votre confort visuel, adapter l'application en appliquant le mode sombre. Pour cela, vous cliquez sur le bouton 'Mode sombre' et ensuit 'Appliquer' et le tour est joué!"
             break
+        case 4:
+            infosLB.text = "La page assistant est un générateur de plan d'épargne généré par IA. Ils vous suffit de rentrer les données demandées, puis l'app vous génére un rapport complet. Attention, il faut prendre des pincettes avant de passer à l'action."
+            break
         default:
             break
         }
@@ -36,7 +39,7 @@ class PlusDinfosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        hideKeyboardWhenTappedAround()
         editText()
 
         // Do any additional setup after loading the view.

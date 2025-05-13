@@ -61,7 +61,7 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        hideKeyboardWhenTappedAround()
         typeStatPV.delegate = self
         typeStatPV.dataSource = self
         
