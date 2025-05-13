@@ -130,6 +130,8 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
             validationLB.text = "Le flux a bien été ajouté!"
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.validationLB.text = ""
+                self.lesGroupes.removeAll()
+                self.laTableView.reloadData()
             }
         }
     }
