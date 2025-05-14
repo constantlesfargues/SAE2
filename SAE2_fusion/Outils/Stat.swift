@@ -195,7 +195,7 @@ class Stat:Codable {
         }
         if type == "pieMontant" {
             var data:[(nom:String,montant:Float)] = []
-            for flux in AppDelegate.fluxs {
+            for flux in fluxs {
                 data.append((flux.nomFlux,flux.montantFlux))
             }
             return AnyView(mkPie(data: data))

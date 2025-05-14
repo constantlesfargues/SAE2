@@ -91,7 +91,7 @@ class CreationStatistiqueViewController: UIViewController,UITableViewDelegate,UI
             if laStat.recurrent != nil {
                 let lesTypesRec:[Bool:Int] = [
                     true:1,
-                    false:0
+                    false:2
                 ]
                 recurrentSC.selectedSegmentIndex = lesTypesRec[laStat.recurrent!]!
             }else {
