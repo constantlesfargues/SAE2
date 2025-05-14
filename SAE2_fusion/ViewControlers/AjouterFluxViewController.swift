@@ -47,6 +47,7 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBAction func tapAjouterGroupe(_ sender: Any) {
         if nomGroupeTF.text! != "" {
             lesGroupes.append(Groupe(nomGroupeTF.text!))
+            self.nomGroupeTF.text = ""
             self.laTableView.reloadData()
         }
     }
@@ -127,11 +128,11 @@ class AjouterFluxViewController: UIViewController,UITableViewDelegate,UITableVie
             montantFluxTF.text! = ""
             laFrequenceSC.selectedSegmentIndex = 0
             estRecurrSC.selectedSegmentIndex = 0
+            self.lesGroupes.removeAll()
+            self.laTableView.reloadData()
             validationLB.text = "Le flux a bien été ajouté!"
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.validationLB.text = ""
-                self.lesGroupes.removeAll()
-                self.laTableView.reloadData()
             }
         }
     }
